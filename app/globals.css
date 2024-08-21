@@ -67,3 +67,61 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Act as a border */
+  .card-wrapper {
+    @apply relative overflow-hidden rounded-2xl bg-gradient-to-b from-[#4D618E] to-[#2A354E];
+  }
+
+  /* Gradient */
+  .card-wrapper::before {
+    background: conic-gradient(
+      rgb(253, 255, 226, 1) 0deg,
+      rgba(255, 234, 112, 0.2) 0deg,
+      transparent 100deg
+    );
+
+    @apply absolute top-[-30%] left-[-30%] h-[160%] w-[160%] hover:animate-border-spin-left content-[''];
+    z-index: 1;
+  }
+
+  .card-wrapper::after {
+    background: conic-gradient(
+      rgb(253, 255, 226, 1) 0deg,
+      rgba(255, 234, 112, 0.2) 0deg,
+      transparent 100deg
+    );
+    transform: rotate(180deg);
+
+    @apply absolute top-[-30%] left-[-30%] h-[160%] w-[160%] hover:animate-border-spin-right content-[''];
+    z-index: 1;
+  }
+
+  /* Body */
+  .card-content {
+    @apply absolute left-[2.5px] top-[2.5px] h-[calc(100%-5px)] w-[calc(100%-5px)] rounded-2xl bg-gradient-to-b from-[#3A4A6C] to-[#1A2130];
+    z-index: 2;
+  }
+
+  /************** Login Card ******************/
+  .login-card-wrapper {
+    @apply relative overflow-hidden rounded-xl bg-[#313745];
+  }
+
+  .login-card-wrapper::before {
+    background: conic-gradient(
+      rgb(131, 180, 255, 0.8  ) 0deg,
+      transparent 100deg
+    );
+
+    @apply absolute top-[-25%] left-[-25%] h-[150%] w-[150%] animate-login-border-spin content-[''];
+    z-index: 1;
+  }
+
+  .login-card-content {
+    @apply absolute left-[1.5px] top-[1.5px] h-[calc(100%-3px)] w-[calc(100%-3px)] rounded-xl bg-background;
+    z-index: 2;
+  }
+  /************** Login Card ******************/
+}
