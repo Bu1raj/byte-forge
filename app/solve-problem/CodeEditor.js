@@ -48,11 +48,12 @@ export default function CodeEditor({
 
   return (
     <div className="flex gap-2 pl-3 h-full w-full flex-col">
-      <div className="flex justify-between mr-5 pt-1">
+      <div className="flex justify-between mr-5">
         <SelectMenu
           topic="language"
           options={["c", "cpp", "javascript", "python"]}
           setState={setLanguage}
+          width="w-[150px]"
         />
         <div className="flex gap-2 items-center">
           <button className="border border-[#83B4FF] font-semibold rounded w-24 h-9 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background">

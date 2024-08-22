@@ -47,12 +47,11 @@ export default function CodingPage() {
           direction="horizontal"
           className="border relative h-full"
         >
-          <ResizablePanel defaultSize={50}>
-            <Tabs defaultValue="Questions" className="w-full mt-2">
-              <TabsList className="grid w-full grid-cols-2 pr-5">
-                <TabsTrigger value="Questions">Questions</TabsTrigger>
-                <TabsTrigger value="Submissions">Submissions</TabsTrigger>
-                {/* <TabsTrigger value="Discussion">Discussion</TabsTrigger> */}
+          <ResizablePanel defaultSize={42}>
+            <Tabs defaultValue="Questions" className="w-full mt-1">
+              <TabsList className="grid w-full grid-cols-2 bg-background gap-2 px-3">
+                <TabsTrigger value="Questions" className="border-2 border-border data-[state=active]:bg-border rounded">Questions</TabsTrigger>
+                <TabsTrigger value="Submissions" className="border-2 border-border data-[state=active]:bg-border rounded">Submissions</TabsTrigger>
               </TabsList>
 
               <TabsContent value="Questions" className="w-[100%] h-[90vh]">
@@ -61,9 +60,9 @@ export default function CodingPage() {
             </Tabs>
           </ResizablePanel>
           <ResizableHandle withHandle />
-          <ResizablePanel defaultSize={70}>
+          <ResizablePanel defaultSize={58}>
             <ResizablePanelGroup direction="vertical" className="mt-2">
-              <ResizablePanel defaultSize={50}>
+              <ResizablePanel defaultSize={58}>
                 <CodeEditor
                   onSubmit={onSubmission}
                   config={question?.config}
@@ -74,7 +73,7 @@ export default function CodingPage() {
                 />
               </ResizablePanel>
               <ResizableHandle withHandle />
-              <ResizablePanel defaultSize={40}>
+              <ResizablePanel defaultSize={42}>
                 <OutputBox
                   examples={question?.examples}
                   message={output}

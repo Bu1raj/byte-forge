@@ -10,7 +10,7 @@ export default function OutputBox({ examples, message, loading }) {
   return (
     <div className="p-3 w-full">
       <Tabs defaultValue="test-case-1" className="h-full w-full flex flex-col">
-        <TabsList className="font-semibold grid grid-cols-2 w-[350px] text-center">
+        <TabsList className="font-semibold flex text-center w-fit gap-4 ">
           {examples.map((example, index) => (
             <TabsTrigger
               value={`test-case-${index + 1}`}

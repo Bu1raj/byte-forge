@@ -9,10 +9,11 @@ import {
 
 import React from "react";
 
-export default function SelectMenu({topic , options , setState}) {
+export default function SelectMenu({topic , options , setState, width}) {
+  {console.log(width)}
   return (
     <Select onValueChange={(value)=> setState(value)}>
-      <SelectTrigger className="w-[180px] rounded">
+      <SelectTrigger className={"rounded " + (width ? width : 'w-fit')}>
         <SelectValue placeholder={`${options[0]}`} />
       </SelectTrigger>
       <SelectContent>
