@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+---
+You can access the endpoint at http://(Azure link):3000/process
 
-## Getting Started
+# Code Execution Docker Container
 
-First, run the development server:
+## Overview
+This Docker container is designed to execute code written in various programming languages (currently supporting C, C++, and Python) and validate the output against provided test cases. It accepts a JSON input specifying the code and test cases, and returns a JSON output with the results of the test case evaluations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+It can be viewed at the link below 
+https://hub.docker.com/r/jkushal16/byteforge
+
+## Backend I/O Format
+
+### Input Format
+
+The container accepts a JSON object with the following structure:
+
+```json
+{
+  "language": "C",
+  "code": "<your_code_here>",
+  "testCases": [
+    {
+      "input": "test",
+      "expectedOutput": "test"
+    },
+    ...
+  ]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **language**: (string) The programming language of the code. Supported values are `"C"`, `"C++"`, and `"python"`.
+- **code**: (string) The code to be executed.
+- **testCases**: (array of objects) A list of test cases to be evaluated.
+  - **input**: (string) The input to be provided to the code.
+  - **expectedOutput**: (string) The expected output from the code.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Output Format
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The container returns a JSON array with the results of each test case. Each element in the array is an object with the following structure:
 
-## Learn More
+```json
+[
+  {
+    "input": "test",
+    "expectedOutput": "test",
+    "actualOutput": "test",
+    "passed": true
+  },
+  ...
+]
+```
 
-To learn more about Next.js, take a look at the following resources:
+- **input**: (string) The input that was provided to the code.
+- **expectedOutput**: (string) The expected output for the given input.
+- **actualOutput**: (string) The actual output produced by the code.
+- **passed**: (boolean) A flag indicating whether the actual output matches the expected output.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Example
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Sample Input
 
-## Deploy on Vercel
+```json
+{
+  "language": "C",
+  "code": "#include <stdio.h>\nint main() { char str[100]; scanf(\"%s\", str); printf(\"%s\", str); return 0; }",
+  "testCases": [
+    {
+      "input": "test",
+      "expectedOutput": "test"
+    },
+    {
+      "input": "example",
+      "expectedOutput": "example"
+    },
+    {
+      "input": "C_programming",
+      "expectedOutput": "C_programming"
+    }
+  ]
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Sample Output
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```json
+[
+  {
+    "input": "test",
+    "expectedOutput": "test",
+    "actualOutput": "test",
+    "passed": true
+  },
+  {
+    "input": "example",
+    "expectedOutput": "example",
+    "actualOutput": "example",
+    "passed": true
+  },
+  {
+    "input": "C_programming",
+    "expectedOutput": "C_programming",
+    "actualOutput": "C_programming",
+    "passed": true
+  }
+]
+```
+
+## How to Use
+1. Build and run the Docker container.
+2. Send a POST request to the container's endpoint with the input JSON.
+3. The container will process the code and test cases, and return the results in the output JSON format.
+
+## Supported Languages
+- **C**
+- **C++**
+- **Python**
+
+## Future Enhancements
+- Add support for additional programming languages.
+- Improve error handling and output formatting.
+
+---
