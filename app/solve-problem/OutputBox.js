@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function OutputBox({ examples, message }) {
+export default function OutputBox({ examples, outputs }) {
     return (
     <div className="p-3 w-full">
       <Tabs defaultValue="test-case-1" className="h-full w-full flex flex-col">
@@ -31,7 +31,7 @@ export default function OutputBox({ examples, message }) {
               </div>
               <div className="flex flex-col gap-2">
                 <p className="font-semibold">Output:</p>
-                <p className="w-fit  p-2 rounded-md">{message}</p>
+                <p className="w-fit  p-2 rounded-md">{outputs[index]}</p>
               </div>
             </div>
           </TabsContent>

@@ -43,10 +43,12 @@ export default function CodeEditor({
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        data.forEach((element,index) => {
-          onSubmit(element["actualOutput"],index);
-      });
-        //Put action here
+        
+        let actualOps = data.map((element) => element["actualOutput"]);
+      //   data.forEach((element,index) => {
+      //     onSubmit(element["actualOutput"],index);
+      // });
+        onSubmit(actualOps);
       })
       .catch((error) => {
         console.error("Error sending request:", error);

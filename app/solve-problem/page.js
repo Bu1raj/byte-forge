@@ -20,7 +20,7 @@ export default function CodingPage() {
   const [question, setQuestion] = useState(null);
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [output, setOutput] = useState("");
+  const [output, setOutput] = useState([]);
 
   useEffect(() => {
     if (questionId) {
@@ -77,7 +77,7 @@ export default function CodingPage() {
               <ResizablePanel defaultSize={42}>
                 <OutputBox
                   examples={question?.testCases}
-                  message={output}
+                  outputs={output}
                 />
               </ResizablePanel>
             </ResizablePanelGroup>
