@@ -32,11 +32,18 @@ export const experimentsList = [
     id: "expt01",
     number: 1,
     title: "Two Sum",
-    description:
-      "Given an array of elements, find 2 numbers whose sum is equal to 0.",
-    examples: [
-      { input: "[2,7,11,15]", output: "-1" },
-      { input: "[2,7,-2,1]", output: "{2,-2}" },
+    description: "Given an array of elements, find 2 numbers whose sum is equal to 0.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "2 7 11 15",
+        expectedOutput: "-1",
+      },
+      {
+        input: "2 7 -2 1",
+        expectedOutput: "2 -2",
+      },
     ],
     constraints: ["arr.size()<1e5"],
     locked: false,
@@ -47,15 +54,20 @@ export const experimentsList = [
     id: "expt02",
     number: 2,
     title: "Add Two Numbers",
-    description:
-      "Given two non-empty linked lists representing two non-negative integers, add them together and return it as a linked list.",
-    examples: [
-      { input: "(2 -> 4 -> 3) + (5 -> 6 -> 4)", output: "(7 -> 0 -> 8)" },
-      { input: "(0) + (0)", output: "(0)" },
+    description: "Given two non-empty linked lists representing two non-negative integers, add them together and return it as a linked list.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "2 4 3 5 6 4",
+        expectedOutput: "7 0 8",
+      },
+      {
+        input: "0 0",
+        expectedOutput: "0",
+      },
     ],
-    constraints: [
-      "The number of nodes in each linked list is in the range [1, 100].",
-    ],
+    constraints: ["The number of nodes in each linked list is in the range [1, 100]."],
     locked: false,
     completed: false,
   },
@@ -64,12 +76,22 @@ export const experimentsList = [
     id: "expt03",
     number: 3,
     title: "Longest Substring Without Repeating Characters",
-    description:
-      "Given a string s, find the length of the longest substring without repeating characters.",
-    examples: [
-      { input: "abcabcbb", output: "3" },
-      { input: "bbbbb", output: "1" },
-      { input: "pwwkew", output: "3" },
+    description: "Given a string s, find the length of the longest substring without repeating characters.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "abcabcbb",
+        expectedOutput: "3",
+      },
+      {
+        input: "bbbbb",
+        expectedOutput: "1",
+      },
+      {
+        input: "pwwkew",
+        expectedOutput: "3",
+      },
     ],
     constraints: [
       "0 <= s.length <= 5 * 10^4",
@@ -83,14 +105,30 @@ export const experimentsList = [
     id: "expt04",
     number: 4,
     title: "Median of Two Sorted Arrays",
-    description:
-      "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
-    examples: [
-      { input: "[1,3], [2]", output: "2.0" },
-      { input: "[1,2], [3,4]", output: "2.5" },
-      { input: "[0,0], [0,0]", output: "0.0" },
-      { input: "[], [1]", output: "1.0" },
-      { input: "[2], []", output: "2.0" },
+    description: "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "1 3 2",
+        expectedOutput: "2.0",
+      },
+      {
+        input: "1 2 3 4",
+        expectedOutput: "2.5",
+      },
+      {
+        input: "0 0 0 0",
+        expectedOutput: "0.0",
+      },
+      {
+        input: "1",
+        expectedOutput: "1.0",
+      },
+      {
+        input: "2",
+        expectedOutput: "2.0",
+      },
     ],
     constraints: [
       "nums1.length == m",
@@ -107,13 +145,26 @@ export const experimentsList = [
     id: "expt05",
     number: 5,
     title: "Longest Palindromic Substring",
-    description:
-      "Given a string s, return the longest palindromic substring in s.",
-    examples: [
-      { input: "babad", output: "bab" },
-      { input: "cbbd", output: "bb" },
-      { input: "a", output: "a" },
-      { input: "ac", output: "a" },
+    description: "Given a string s, return the longest palindromic substring in s.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "babad",
+        expectedOutput: "bab",
+      },
+      {
+        input: "cbbd",
+        expectedOutput: "bb",
+      },
+      {
+        input: "a",
+        expectedOutput: "a",
+      },
+      {
+        input: "ac",
+        expectedOutput: "a",
+      },
     ],
     constraints: [
       "1 <= s.length <= 1000",
@@ -127,12 +178,22 @@ export const experimentsList = [
     id: "expt06",
     number: 6,
     title: "ZigZag Conversion",
-    description:
-      "The string 'PAYPALISHIRING' is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)",
-    examples: [
-      { input: "PAYPALISHIRING, 3", output: "PAHNAPLSIIGYIR" },
-      { input: "PAYPALISHIRING, 4", output: "PINALSIGYAHRPI" },
-      { input: "A, 1", output: "A" },
+    description: "The string 'PAYPALISHIRING' is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "PAYPALISHIRING 3",
+        expectedOutput: "PAHNAPLSIIGYIR",
+      },
+      {
+        input: "PAYPALISHIRING 4",
+        expectedOutput: "PINALSIGYAHRPI",
+      },
+      {
+        input: "A 1",
+        expectedOutput: "A",
+      },
     ],
     constraints: [
       "1 <= s.length <= 1000",
@@ -146,13 +207,26 @@ export const experimentsList = [
     id: "expt07",
     number: 7,
     title: "Reverse Integer",
-    description:
-      "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.",
-    examples: [
-      { input: "123", output: "321" },
-      { input: "-123", output: "-321" },
-      { input: "120", output: "21" },
-      { input: "0", output: "0" },
+    description: "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "123",
+        expectedOutput: "321",
+      },
+      {
+        input: "-123",
+        expectedOutput: "-321",
+      },
+      {
+        input: "120",
+        expectedOutput: "21",
+      },
+      {
+        input: "0",
+        expectedOutput: "0",
+      },
     ],
     constraints: ["-2^31 <= x <= 2^31 - 1"],
     locked: false,
@@ -163,14 +237,30 @@ export const experimentsList = [
     id: "expt08",
     number: 8,
     title: "String to Integer (atoi)",
-    description:
-      "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).",
-    examples: [
-      { input: "42", output: "42" },
-      { input: "   -42", output: "-42" },
-      { input: "4193 with words", output: "4193" },
-      { input: "words and 987", output: "0" },
-      { input: "-91283472332", output: "-2147483648" },
+    description: "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "42",
+        expectedOutput: "42",
+      },
+      {
+        input: "-42",
+        expectedOutput: "-42",
+      },
+      {
+        input: "4193 with words",
+        expectedOutput: "4193",
+      },
+      {
+        input: "words and 987",
+        expectedOutput: "0",
+      },
+      {
+        input: "-91283472332",
+        expectedOutput: "-2147483648",
+      },
     ],
     constraints: [
       "0 <= s.length <= 200",
@@ -184,13 +274,26 @@ export const experimentsList = [
     id: "expt09",
     number: 9,
     title: "Palindrome Number",
-    description:
-      "Given an integer x, return true if x is a palindrome integer.",
-    examples: [
-      { input: "121", output: "true" },
-      { input: "-121", output: "false" },
-      { input: "10", output: "false" },
-      { input: "-101", output: "false" },
+    description: "Given an integer x, return true if x is a palindrome integer.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "121",
+        expectedOutput: "true",
+      },
+      {
+        input: "-121",
+        expectedOutput: "false",
+      },
+      {
+        input: "10",
+        expectedOutput: "false",
+      },
+      {
+        input: "-101",
+        expectedOutput: "false",
+      },
     ],
     constraints: ["-2^31 <= x <= 2^31 - 1"],
     locked: false,
@@ -201,14 +304,30 @@ export const experimentsList = [
     id: "expt10",
     number: 10,
     title: "Regular Expression Matching",
-    description:
-      "Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where: '.' Matches any single character. '*' Matches zero or more of the preceding element.",
-    examples: [
-      { input: "aa, a", output: "false" },
-      { input: "aa, a*", output: "true" },
-      { input: "ab, .*", output: "true" },
-      { input: "aab, c*a*b", output: "true" },
-      { input: "mississippi, mis*is*p*.", output: "false" },
+    description: "Given an input string s and a pattern p, implement regular expression matching with support for '.' and '*' where: '.' Matches any single character. '*' Matches zero or more of the preceding element.",
+    code: "#include <stdio.h>\n\nint main() {\n    printf(\"Hello World\");\n    return 0;\n}",
+    language: "C",
+    testCases: [
+      {
+        input: "aa a",
+        expectedOutput: "false",
+      },
+      {
+        input: "aa a*",
+        expectedOutput: "true",
+      },
+      {
+        input: "ab .*",
+        expectedOutput: "true",
+      },
+      {
+        input: "aab c*a*b",
+        expectedOutput: "true",
+      },
+      {
+        input: "mississippi mis*is*p*.",
+        expectedOutput: "false",
+      },
     ],
     constraints: [
       "1 <= s.length <= 20",
@@ -220,3 +339,4 @@ export const experimentsList = [
     completed: false,
   },
 ];
+

@@ -2,12 +2,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function OutputBox({ examples, message, loading }) {
-  if (!examples || loading) {
-    return <Skeleton className="h-[80%] w-full p-2" />;
-  }
-
-  return (
+export default function OutputBox({ examples, message }) {
+    return (
     <div className="p-3 w-full">
       <Tabs defaultValue="test-case-1" className="h-full w-full flex flex-col">
         <TabsList className="font-semibold flex text-center w-fit gap-4 ">

@@ -24,7 +24,8 @@ export default function QuestionBox({ question }) {
       </div>
 
       <div className="flex flex-col gap-3 text-white">
-        {question.examples.map((example, index) => (
+        
+        {question.testCases.map((example, index) => (
           <div key={index} className="bg-subtleBackground p-3 rounded">
             <p className="font-semibold mb-2">Example {index + 1}</p>
             <div className="flex flex-col gap-1">
@@ -34,7 +35,7 @@ export default function QuestionBox({ question }) {
               </div>
               <div className="mb-3">
                 <p className="font-semibold mb-1">Output</p>
-                <p className="font-light">{example.output}</p>
+                <p className="font-light">{example.expectedOutput}</p>
               </div>
             </div>
           </div>
