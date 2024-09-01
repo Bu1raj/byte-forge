@@ -27,7 +27,6 @@ export default function SignInForm() {
     try {
       console.log("Signing up...");
       await signUp(email, password);
-      // Redirect to complete profile page
       router.push("/complete-profile");
     } catch (err) {
       console.error(err);

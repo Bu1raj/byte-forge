@@ -8,7 +8,7 @@ export default function CompleteProfilePage() {
     <div className="h-screen w-screen flex items-center justify-center gap-32">
       <div
         className={
-          "login-card-wrapper flex flex-col w-[350px] h-[400px]"
+          "login-card-wrapper flex flex-col w-[350px] h-[450px]"
         }
       >
         <div className="login-card-content flex flex-col items-center justify-center gap-12">
