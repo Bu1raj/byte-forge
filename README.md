@@ -1,4 +1,5 @@
 ---
+You can access the endpoint at http://<Azure link>:3000/process
 
 # Code Execution Docker Container
 
