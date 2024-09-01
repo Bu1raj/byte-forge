@@ -46,6 +46,7 @@ export const experimentsList = [
       },
     ],
     constraints: ["arr.size()<1e5"],
+    
     locked: false,
     completed: false,
   },

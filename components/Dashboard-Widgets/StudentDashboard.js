@@ -30,14 +30,14 @@ export default function StudentDashboard() {
   }
   return (
     <>
-      <div className="w-[calc(100vw-15rem)] h-48 border border-[#83B4FF] rounded-2xl mt-8 mb-8 p-8 flex flex-col justify-between bg-300% animate-gradient bg-gradient-to-r from-[#1A2130] to-[#2F3A55]">
+      <div className="w-[calc(100vw-15rem)] h-32 border border-[#83B4FF] rounded-2xl mt-8 mb-8 p-8 flex flex-col justify-between bg-300% animate-gradient bg-gradient-to-r from-[#1A2130] to-[#2F3A55]">
         <h1 className="text-5xl font-bold">Programming in C</h1>
         <div className="flex gap-8 ml-auto text-xl">
           <p>Completed {completedCount}</p>
           <p>Remaining {remainingCount}</p>
         </div>
       </div>
-      <div className="h-full w-[calc(100vw-15rem)] grid grid-cols-5 gap-8">
+      <div className="h-full w-[calc(100vw-15rem)] grid grid-cols-5 gap-8 pb-8">
         {experimentsList.map((experiment, index) => (
           <div key={index} className="card-wrapper">
             <div className="card-content h-44 p-6 flex flex-col justify-between text-black">
