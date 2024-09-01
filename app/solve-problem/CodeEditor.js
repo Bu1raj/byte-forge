@@ -2,6 +2,7 @@ import SelectMenu from "@/components/SelectMenu";
 import React, { useState, useEffect, useRef } from "react";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { Skeleton } from "@/components/ui/skeleton";
+import CodingPage from "./page";
 
 export default function CodeEditor({
   config,
@@ -10,6 +11,7 @@ export default function CodeEditor({
   setLoading,
   loading,
   onSubmit,
+  examples,
 }) {
   const [language, setLanguage] = useState("c");
   const [theme, setTheme] = useState("vs-dark");
@@ -25,10 +27,13 @@ export default function CodeEditor({
     const requestBody = {
       code: code,
       language: language,
+      testcase : examples,
     };
     console.log(requestBody);
 
-    fetch("http://localhost:8080/execute", {
+    const api_endpoint = process.env.NEXT_PUBLIC_AZURE_ENDPOINT; 
+
+    fetch(api_endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,14 +42,17 @@ export default function CodeEditor({
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Response from server:", data);
-        onSubmit(data.output);
+        console.log(data);
+        data.forEach((element,index) => {
+          onSubmit(element["actualOutput"],index);
+      });
+        //Put action here
       })
       .catch((error) => {
         console.error("Error sending request:", error);
       });
-    console.log(code);
   };
+
 
   return (
     <div className="flex gap-2 pl-3 h-full w-full flex-col">

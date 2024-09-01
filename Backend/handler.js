@@ -79,9 +79,9 @@ const handler = async (event) => {
 
     try {
       let actualOutput;
-      if (language === 'C') {
+      if (language === 'c') {
         actualOutput = await executeCCode(code, input);
-      } else if (language === 'C++') {
+      } else if (language === 'cpp') {
         actualOutput = await executeCppCode(code, input);
       } else if (language === 'python') {
         actualOutput = await executePythonCode(code, input);

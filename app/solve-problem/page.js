@@ -20,7 +20,7 @@ export default function CodingPage() {
   const [question, setQuestion] = useState(null);
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [output, setOutput] = useState("Brother, I am empty");
+  const [output, setOutput] = useState("");
 
   useEffect(() => {
     if (questionId) {
@@ -31,7 +31,7 @@ export default function CodingPage() {
     }
   }, [questionId]);
 
-  const onSubmission = (result) => {
+  const onSubmission = (result,index) => {
     setOutput(result);
   };
 
@@ -70,14 +70,14 @@ export default function CodingPage() {
                   setMessage={setMessage}
                   setLoading={setLoading}
                   loading={loading}
+                  examples = {question?.testCases}
                 />
               </ResizablePanel>
               <ResizableHandle withHandle />
               <ResizablePanel defaultSize={42}>
                 <OutputBox
-                  examples={question?.examples}
+                  examples={question?.testCases}
                   message={output}
-                  loading={loading}
                 />
               </ResizablePanel>
             </ResizablePanelGroup>

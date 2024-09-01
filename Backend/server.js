@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = 3000;
 
 // Import the handler function
 const { handler } = require('./handler');
+
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: 'GET,POST,PUT,DELETE',
+    allowedHeaders: 'Content-Type,Authorization'
+}));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -20,7 +27,7 @@ app.post('/process', async (req, res) => {
         const result = await handler({
             language: data.language,
             code: data.code,
-            testCases: data.testCases  // Include testCases here
+            testCases: data.testcase  // Include testCases here
         });
         
         // Send the handler's response back to the client
