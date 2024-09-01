@@ -39,6 +39,7 @@ export const experimentsList = [
       { input: "[2,7,-2,1]", output: "{2,-2}" },
     ],
     constraints: ["arr.size()<1e5"],
+    
     locked: false,
     completed: false,
   },

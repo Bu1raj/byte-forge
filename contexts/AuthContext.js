@@ -50,7 +50,7 @@ export default function AuthProvider({children}) {
           firebaseData = docSnap.data();
           console.log(firebaseData);
         }
-        setUserData(user);
+        setUserData(firebaseData);
       }catch(e){
         console.log(e);
       }finally{
