@@ -1,11 +1,15 @@
+"use client"
 import React from 'react'
 import StaffExptCard from '../StaffExptCard'
-import { labData } from '@/app/consts';
+import { useLDC } from '@/contexts/LabDataContext';
 
 export default function StaffDashboard() {
+  const {labData, lockUnlockExperiment} = useLDC();
   const {experimentsList} = labData;
-  function handleLockClick(id) {
-    console.log('Lock clicked for experiment with id ' + id);
+
+  async function handleLockClick(id, lockOrUnclock) {
+    console.log('Lock/Unlock experiment with id:', id);
+    await lockUnlockExperiment(lockOrUnclock, id);
   }
 
   return (
@@ -16,7 +20,7 @@ export default function StaffDashboard() {
       </div>
       {
         experimentsList.map((experiment, index) => (
-          <StaffExptCard exptTitle={experiment.title} id={experiment.id} key={index} isLocked={true} handleLockClick={handleLockClick} />
+          <StaffExptCard exptTitle={experiment.title} id={experiment.id} key={index} isLocked={experiment.locked} handleLockClick={handleLockClick} />
         ))
       }
     </div>

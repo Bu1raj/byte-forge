@@ -2,14 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useRouter } from "next/navigation";
-import { labData } from "@/app/consts";
+import { useLDC } from "@/contexts/LabDataContext";
+import { HiLockClosed } from "react-icons/hi2";
+// import { labData } from "@/app/consts";
 
 export default function StudentDashboard() {
   const router = useRouter();
+  const { labData } = useLDC();
   const [completedCount, setCompletedCount] = useState("--");
   const [remainingCount, setRemainingCount] = useState("--");
 
-  const {noStudentsInLab,experimentsList} = labData;
+  const { noStudentsInLab, experimentsList } = labData;
 
   useEffect(() => {
     // Calculate the number of completed and remaining experiments
@@ -42,26 +45,32 @@ export default function StudentDashboard() {
       <div className="h-full w-[calc(100vw-15rem)] grid grid-cols-5 gap-8 pb-8">
         {experimentsList.map((experiment, index) => (
           <div key={index} className="card-wrapper">
-            <div className="card-content h-44 p-6 flex flex-col justify-between text-black">
+            <div className="card-content h-44 p-6 flex flex-col gap-10 text-black">
               <h1 className="text-xl text-white font-semibold truncate">
                 {experiment.title}
               </h1>
-              <div className="flex flex-col gap-2 text-sm font-medium items-start">
-                <button
-                  onClick={() => handleSolveProblem(experiment)}
-                  className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
-                >
-                  Solve problem
-                  <IoMdArrowDropright fill="black" />
-                </button>
-                <button
-                  onClick={handleVivaVoceClick}
-                  className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
-                >
-                  Viva Voce
-                  <IoMdArrowDropright fill="black" />
-                </button>
-              </div>
+              {experiment.locked ? (
+                <div className="w-full flex justify-center">
+                    <HiLockClosed size={75} className="text-tertiary" />
+                </div>
+              ) : (
+                <div className="flex flex-col gap-2 text-sm font-medium items-start">
+                  <button
+                    onClick={() => handleSolveProblem(experiment)}
+                    className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
+                  >
+                    Solve problem
+                    <IoMdArrowDropright fill="black" />
+                  </button>
+                  <button
+                    onClick={handleVivaVoceClick}
+                    className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
+                  >
+                    Viva Voce
+                    <IoMdArrowDropright fill="black" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ))}
