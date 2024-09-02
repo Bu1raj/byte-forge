@@ -11,9 +11,11 @@ import CodeEditor from "./CodeEditor";
 import OutputBox from "./OutputBox";
 import Navbar from "@/components/Navbars/CodingPageNavbar";
 import { useSearchParams } from "next/navigation";
-import { experimentsList } from "../constants";
+import { getConfig } from "../constants";
+import { labData } from "../consts";
 
 export default function CodingPage() {
+  const {noStudentsInLab,experimentsList} = labData;
   const searchParams = useSearchParams();
   const questionId = searchParams?.get("questionId");
 
@@ -65,18 +67,18 @@ export default function CodingPage() {
               <ResizablePanel defaultSize={58}>
                 <CodeEditor
                   onSubmit={onSubmission}
-                  config={question?.config}
+                  config={getConfig()}
                   questionId={question?.id}
                   setMessage={setMessage}
                   setLoading={setLoading}
                   loading={loading}
-                  examples = {question?.testCases}
+                  examples = {question?.problem.testCases}
                 />
               </ResizablePanel>
               <ResizableHandle withHandle />
               <ResizablePanel defaultSize={42}>
                 <OutputBox
-                  examples={question?.testCases}
+                  examples={question?.problem.testCases}
                   outputs={output}
                 />
               </ResizablePanel>

@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Experiment, experimentsList } from "../../app/constants";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import { labData } from "@/app/consts";
 
 export default function StudentDashboard() {
   const router = useRouter();
   const [completedCount, setCompletedCount] = useState("--");
   const [remainingCount, setRemainingCount] = useState("--");
+
+  const {noStudentsInLab,experimentsList} = labData;
 
   useEffect(() => {
     // Calculate the number of completed and remaining experiments

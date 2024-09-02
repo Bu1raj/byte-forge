@@ -1,9 +1,9 @@
 import React from 'react'
 import StaffExptCard from '../StaffExptCard'
-import { experimentsList } from '@/app/constants'
+import { labData } from '@/app/consts';
 
 export default function StaffDashboard() {
-
+  const {experimentsList} = labData;
   function handleLockClick(id) {
     console.log('Lock clicked for experiment with id ' + id);
   }
