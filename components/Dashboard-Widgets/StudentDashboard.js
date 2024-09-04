@@ -34,16 +34,16 @@ export default function StudentDashboard() {
   }
   return (
     <>
-      <div className="w-[calc(100vw-15rem)] h-32 border border-[#83B4FF] rounded-2xl mt-8 mb-8 p-8 flex flex-col justify-between bg-300% animate-gradient bg-gradient-to-r from-[#1A2130] to-[#2F3A55]">
+      <div className="w-[calc(100vw-15rem)] h-32 border border-[#83B4FF] rounded-2xl mt-8 mb-8 p-8 flex flex-col justify-between bg-300% animate-gradient bg-gradient-to-r from-[#020817] to-[#83b4ff1a]">
         <h1 className="text-5xl font-bold">Programming in C</h1>
-        <div className="flex gap-8 ml-auto text-xl">
+        {/* <div className="flex gap-8 ml-auto text-xl">
           <p>Completed {completedCount}</p>
           <p>Remaining {remainingCount}</p>
-        </div>
+        </div> */}
       </div>
       <div className="h-full w-[calc(100vw-15rem)] grid grid-cols-5 gap-8 pb-8">
         {experimentsList.map((experiment, index) => (
-            <div key={index} className="p-6 flex flex-col gap-10 text-black border rounded-xl bg-gradient-to-b from-[#3A4A6C] to-[#1A2130] border-secondary">
+            <div key={index} className="p-6 flex flex-col gap-10 text-black border rounded-xl bg-300% animate-gradient bg-gradient-to-b from-[#020817] to-[#83b4ff1a] border-secondary">
               <h1 className="text-xl text-white font-semibold truncate">
                 {experiment.title}
               </h1>
@@ -55,17 +55,17 @@ export default function StudentDashboard() {
                 <div className="flex flex-col gap-2 text-sm font-medium items-start">
                   <button
                     onClick={() => handleSolveProblem(experiment)}
-                    className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
+                    className="bg-tertiary border border-tertiary px-2 py-1 rounded shadow-2xl flex items-center gap-2 duration-500 hover:bg-background hover:text-tertiary"
                   >
                     Solve problem
-                    <IoMdArrowDropright fill="black" />
+                    <IoMdArrowDropright fill="currentColor" />
                   </button>
                   <button
                     onClick={() => handleVivaVoceClick(experiment)}
-                    className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
+                    className="bg-tertiary border border-tertiary px-2 py-1 rounded shadow-2xl flex items-center gap-2 duration-500 hover:bg-background hover:text-tertiary"
                   >
                     Viva Voce
-                    <IoMdArrowDropright fill="black" />
+                    <IoMdArrowDropright fill="currentColor" />
                   </button>
                 </div>
               )}

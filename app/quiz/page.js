@@ -99,34 +99,34 @@ const QuizPage = () => {
   return (
     <div className='bg-background min-h-screen text-white'>
       <div className='text-center py-6 mb-4'>
-        <h1 className='text-3xl font-bold text-white pt-4'>{selectedExperiment.title}</h1>
+        <h1 className='text-3xl font-medium text-white pt-4'>{selectedExperiment.title}</h1>
       </div>
       <div className='relative container max-w-4xl mx-auto px-4 py-16'>
         {!showResult && (
           <>
-            <div className='bg-muted rounded-md p-4'>
-              <div className='relative'>
-                <h2 className='text-xl mb-2'>
+            <div className='bg-background rounded-md p-4'>
+              <div className='relative mb-4'>
+                <h2 className='text-lg'>
                   Question: {activeQuestion + 1}
                   <span>/{questions.length}</span>
                 </h2>
-                <span className='absolute top-2 right-4 text-xl font-bold'>
+                <span className='absolute top-2 right-4 text-lg font-bold'>
                   {formatTime(time)}
                 </span>
               </div>
-              <div className='bg-background rounded-md border border-border p-4 mb-4'>
-                <h3 className='text-2xl mb-4'>{question}</h3>
+              <div className='bg-background rounded border border-border p-4 mb-4'>
+                <h3 className='text-xl mb-6'>{question}</h3>
                 {options.map((answer, idx) => (
                   <div
                     key={idx}
                     onClick={() => onAnswerSelected(answer, idx)}
                     className={`py-2 px-4 mb-3 cursor-pointer border border-secondary rounded flex items-center justify-between ${
-                      selectedAnswerIndex === idx ? 'bg-tertiary opacity-80 hover: text-black' : 'hover:bg-tertiary hover:text-black'
+                      selectedAnswerIndex === idx ? 'bg-secondary text-black' : 'hover:bg-secondary hover:text-black'
                     }`}
                   >
                     <span className=''>{answer}</span>
                     {selectedAnswerIndex === idx && (
-                      <span className='text-green-500'>&#10004;</span>
+                      <span className='text-green-600'>&#10004;</span>
                     )}
                   </div>
                 ))}
@@ -135,43 +135,43 @@ const QuizPage = () => {
                 <button
                   onClick={previousQuestion}
                   disabled={activeQuestion === 0}
-                  className='btn bg-muted hover: opacity-70 text-white py-2 px-4 rounded-md mt-4 flex items-center'
+                  className='btn w-32 bg-tertiary hover:opacity-80 text-black font-semibold py-2 px-4 rounded mt-4 flex items-center justify-center'
                 >
-                  <FaAngleLeft size={25} className='mr-2' />
+                  <FaAngleLeft size={20} className='mr-2' />
                   Previous
                 </button>
                 <button
                   onClick={nextQuestion}
                   disabled={selectedAnswerIndex === null}
-                  className={`btn ${selectedAnswerIndex !== null ? 'bg-muted hover: opacity-40' : 'bg-muted cursor-not-allowed'} text-white py-2 px-4 rounded-md mt-4 flex items-center`}
+                  className={`btn ${selectedAnswerIndex !== null ? 'bg-tertiary hover:opacity-80' : 'bg-tertiary opacity-70 cursor-not-allowed'} w-32 text-black py-2 px-4 font-semibold rounded mt-4 flex items-center justify-center`}
                 >
                   Next
-                  <FaAngleRight size={25} className='ml-2' />
+                  <FaAngleRight size={20} className='ml-2' />
                 </button>
               </div>
             </div>
           </>
         )}
         {showResult && (
-          <div className='bg-muted rounded-md p-4 mt-4 flex'>
+          <div className='bg-background rounded-md p-4 mt-4 flex'>
             {/* Right Container */}
-            <div className='flex-1 bg-muted rounded-md border border-border p-6 flex flex-col items-center'>
+            <div className='flex-1 bg-background rounded-xl border-2 border-border p-6 flex flex-col gap-2 items-center'>
               <h3 className='text-2xl mb-4'>Quiz Results</h3>
               <div className='w-full max-w-md mb-4'>
-                <div className='flex justify-between mb-2'>
+                <div className='flex justify-between mb-4'>
                   <span>Total Correct:</span>
                   <span>{result.correctAnswers}</span>
                 </div>
-                <div className='flex justify-between mb-2'>
+                <div className='flex justify-between mb-4'>
                   <span>Total Wrong:</span>
                   <span>{result.wrongAnswers}</span>
                 </div>
-                <div className='flex justify-between mb-2'>
+                <div className='flex justify-between mb-4'>
                   <span>Total Questions:</span>
                   <span>{questions.length}</span>
                 </div>
                 <div className='relative pt-1'>
-                  <div className='flex mb-2 items-center justify-between'>
+                  <div className='flex mb-4 items-center justify-between'>
                     <span>Score:</span>
                     <span>{result.score}/{questions.length}</span>
                   </div>
@@ -185,13 +185,13 @@ const QuizPage = () => {
                   </div>
                 </div>
               </div>
-              <button onClick={home} className='btn bg-secondary hover:opacity-60 text-white py-2 px-4 rounded-md mt-4'>
+              <button onClick={home} className='btn bg-secondary hover:opacity-90 font-semibold text-black py-2 px-4 rounded mt-4'>
                 Home
               </button>
             </div>
 
             {/* Left Container */}
-            <div className='flex-1 bg-muted rounded-md border border-border p-6 ml-4'>
+            <div className='flex-1 bg-background rounded-xl border-2 border-border p-6 ml-4'>
               <h3 className='text-2xl mb-4'>Results Detail</h3>
               {questions.map((q, index) => (
                 <div key={index} className='flex items-center justify-between border-b border-border py-2'>
