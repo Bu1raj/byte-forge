@@ -67,4 +67,7 @@
       z-index: 2;
     }
     /************** Login Card ******************/
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
   }

@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import { useLDC } from "@/contexts/LabDataContext";
-import { HiLockClosed } from "react-icons/hi2";
-// import { labData } from "@/app/consts";
+import { IoIosLock } from "react-icons/io";
 
 export default function StudentDashboard() {
   const router = useRouter();
@@ -30,8 +29,8 @@ export default function StudentDashboard() {
     router.push(`/solve-problem?questionId=${experiment.id}`);
   }
 
-  function handleVivaVoceClick() {
-    router.push("/viva-voce");
+  function handleVivaVoceClick(experiment) {
+    router.push(`/instruction?questionId=${experiment.id}`);
   }
   return (
     <>
@@ -44,14 +43,13 @@ export default function StudentDashboard() {
       </div>
       <div className="h-full w-[calc(100vw-15rem)] grid grid-cols-5 gap-8 pb-8">
         {experimentsList.map((experiment, index) => (
-          <div key={index} className="card-wrapper">
-            <div className="card-content h-44 p-6 flex flex-col gap-10 text-black">
+            <div key={index} className="p-6 flex flex-col gap-10 text-black border rounded-xl bg-gradient-to-b from-[#3A4A6C] to-[#1A2130] border-secondary">
               <h1 className="text-xl text-white font-semibold truncate">
                 {experiment.title}
               </h1>
               {experiment.locked ? (
-                <div className="w-full flex justify-center">
-                    <HiLockClosed size={75} className="text-tertiary" />
+                <div className="w-full flex justify-center mt-[-10px]">
+                    <IoIosLock size={75} className="text-tertiary drop-shadow-2xl" />
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 text-sm font-medium items-start">
@@ -63,7 +61,7 @@ export default function StudentDashboard() {
                     <IoMdArrowDropright fill="black" />
                   </button>
                   <button
-                    onClick={handleVivaVoceClick}
+                    onClick={() => handleVivaVoceClick(experiment)}
                     className="bg-[#FDFFE2] px-2 py-1 rounded shadow-lg flex items-center gap-2 hover:bg-[#FDFFE2E6]"
                   >
                     Viva Voce
@@ -72,7 +70,6 @@ export default function StudentDashboard() {
                 </div>
               )}
             </div>
-          </div>
         ))}
       </div>
     </>

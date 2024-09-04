@@ -22,7 +22,7 @@ export default function CodingPage() {
   const [question, setQuestion] = useState(null);
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [output, setOutput] = useState([]);
+  const [output, setOutput] = useState(null);
 
   useEffect(() => {
     if (questionId) {
@@ -33,7 +33,7 @@ export default function CodingPage() {
     }
   }, [questionId]);
 
-  const onSubmission = (result,index) => {
+  const onSubmission = (result) => {
     setOutput(result);
   };
 

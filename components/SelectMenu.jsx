@@ -10,7 +10,6 @@ import {
 import React from "react";
 
 export default function SelectMenu({topic , options , setState, width}) {
-  {console.log(width)}
   return (
     <Select onValueChange={(value)=> setState(value)}>
       <SelectTrigger className={"rounded " + (width ? width : 'w-fit')}>

@@ -4,10 +4,18 @@ import StudentDashboard from "@/components/Dashboard-Widgets/StudentDashboard";
 import StandardNavbar from "@/components/Navbars/StandardNavbar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLDC } from "@/contexts/LabDataContext";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const {currentUser, userData, logout, loading} = useAuth();
   const {labLoading} = useLDC();
+  const router = useRouter();
+  
+  function handleLogout() {
+    logout();
+    router.push("/");
+  }
+
   if (loading || labLoading) {
     return (
       <div className="w-screen h-screen flex flex-col items-center justify-center">
@@ -32,7 +40,7 @@ export default function DashboardPage() {
 
   return (
     <>
-      <StandardNavbar handleLogout={logout}/>
+      <StandardNavbar handleLogout={handleLogout}/>
       <div className="w-full h-[calc(100vh-5rem)] flex flex-col items-center justify-center relative">
         {children}
       </div>

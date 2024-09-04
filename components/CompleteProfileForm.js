@@ -62,8 +62,6 @@ export default function CompleteProfileForm() {
       router.push("/dashboard");
     } catch (e) {
       console.error("ERROR:", e);
-    } finally {
-      setIsSubmitting(false);
     }
   }
 

@@ -30,8 +30,6 @@ export default function SignInForm() {
       router.push("/complete-profile");
     } catch (err) {
       console.error(err);
-    } finally {
-      setIsAuthenticating(false);
     }
   }
 
