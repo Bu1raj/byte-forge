@@ -11,13 +11,105 @@ export const labData = {
       problem:{
         testCases: [
           {
-            input: "2 7 11 15",
-            expectedOutput: "-1",
+            input: "8 -8 4 7",
+            expectedOutput: "-8 8",
+            hide: false
           },
           {
-            input: "2 7 -2 1",
-            expectedOutput: "2 -2",
+            input: "3 7 8 4",
+            expectedOutput: "-1",
+            hide: true
           },
+          {
+            input: "-4 4 10 11",
+            expectedOutput: "-4 4",
+            hide: false
+          },
+          {
+            input: "5 -3 6 9",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "14 16 -8 2",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "4 5 -5 10",
+            expectedOutput: "-5 5",
+            hide: false
+          },
+          {
+            input: "2 7 -7 15",
+            expectedOutput: "-7 7",
+            hide: false
+          },
+          {
+            input: "6 10 -3 9",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "-3 1 2 3",
+            expectedOutput: "-3 3",
+            hide: false
+          },
+          {
+            input: "1 6 7 11",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "12 -12 3 7",
+            expectedOutput: "-12 12",
+            hide: false
+          },
+          {
+            input: "1 1 2 2",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "-9 12 15 -4",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "0 4 5 6",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "13 6 0 -13",
+            expectedOutput: "-13 13",
+            hide: false
+          },
+          {
+            input: "1 5 -1 6",
+            expectedOutput: "-1 1",
+            hide: false
+          },
+          {
+            input: "10 15 20 25",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "-2 2 0 9",
+            expectedOutput: "-2 2",
+            hide: false
+          },
+          {
+            input: "7 3 4 6",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "6 -6 9 8",
+            expectedOutput: "-6 6",
+            hide: false
+          }
         ],
         constraints: ["arr.size()<1e5"],
       },
@@ -61,14 +153,106 @@ export const labData = {
       problem:{
         testCases: [
           {
-            input: "2 4 3 5 6 4",
-            expectedOutput: "7 0 8",
+            input: "2 -> 4 -> 3, 5 -> 6 -> 4",
+            expectedOutput: "7 -> 0 -> 8",
+            hide: false
           },
           {
-            input: "0 0",
+            input: "0, 0",
             expectedOutput: "0",
+            hide: false
           },
-        ],
+          {
+            input: "9 -> 9 -> 9, 1",
+            expectedOutput: "0 -> 0 -> 0 -> 1",
+            hide: false
+          },
+          {
+            input: "2 -> 4 -> 3, 8 -> 6 -> 4",
+            expectedOutput: "0 -> 1 -> 8",
+            hide: true
+          },
+          {
+            input: "7 -> 2 -> 6, 5 -> 9 -> 3",
+            expectedOutput: "2 -> 2 -> 0 -> 1",
+            hide: false
+          },
+          {
+            input: "5 -> 6 -> 4, 2 -> 9 -> 6",
+            expectedOutput: "7 -> 5 -> 1 -> 1",
+            hide: false
+          },
+          {
+            input: "1 -> 2 -> 3, 9 -> 8 -> 7",
+            expectedOutput: "0 -> 1 -> 1 -> 1",
+            hide: true
+          },
+          {
+            input: "5 -> 2, 6 -> 3",
+            expectedOutput: "1 -> 6 -> 1",
+            hide: false
+          },
+          {
+            input: "4 -> 9 -> 5, 6 -> 0 -> 5",
+            expectedOutput: "0 -> 0 -> 1 -> 1",
+            hide: true
+          },
+          {
+            input: "9 -> 9, 1",
+            expectedOutput: "0 -> 0 -> 1",
+            hide: false
+          },
+          {
+            input: "1 -> 8, 0",
+            expectedOutput: "1 -> 8",
+            hide: false
+          },
+          {
+            input: "0, 1 -> 2 -> 3",
+            expectedOutput: "1 -> 2 -> 3",
+            hide: false
+          },
+          {
+            input: "7 -> 8 -> 9, 5 -> 6 -> 4",
+            expectedOutput: "2 -> 5 -> 4 -> 1",
+            hide: false
+          },
+          {
+            input: "1 -> 9, 9",
+            expectedOutput: "0 -> 0 -> 1",
+            hide: false
+          },
+          {
+            input: "5, 5",
+            expectedOutput: "0 -> 1",
+            hide: true
+          },
+          {
+            input: "1 -> 0 -> 0, 0 -> 0 -> 9",
+            expectedOutput: "1 -> 0 -> 9",
+            hide: true
+          },
+          {
+            input: "9 -> 8 -> 7, 1 -> 1 -> 1",
+            expectedOutput: "0 -> 0 -> 9",
+            hide: false
+          },
+          {
+            input: "6 -> 4 -> 5, 4 -> 6 -> 5",
+            expectedOutput: "0 -> 1 -> 1 -> 1",
+            hide: false
+          },
+          {
+            input: "3 -> 3 -> 3, 7 -> 7 -> 7",
+            expectedOutput: "0 -> 1 -> 1 -> 1",
+            hide: false
+          },
+          {
+            input: "1, 9 -> 9 -> 9",
+            expectedOutput: "0 -> 0 -> 0 -> 1",
+            hide: false
+          }
+        ],       
         constraints: ["The number of nodes in each linked list is in the range [1, 100]."],
       },
       quiz: {

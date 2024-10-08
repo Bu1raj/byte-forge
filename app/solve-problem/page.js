@@ -9,6 +9,7 @@ import QuestionPage from "./QuestionBox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CodeEditor from "./CodeEditor";
 import OutputBox from "./OutputBox";
+import SubmissionsTab from "./SubmissionsTab";
 import Navbar from "@/components/Navbars/CodingPageNavbar";
 import { useSearchParams } from "next/navigation";
 import { getConfig } from "../constants";
@@ -52,12 +53,18 @@ export default function CodingPage() {
           <ResizablePanel defaultSize={42}>
             <Tabs defaultValue="Questions" className="w-full mt-1">
               <TabsList className="grid w-full grid-cols-2 bg-background gap-2 px-3">
-                <TabsTrigger value="Questions" className="border-2 border-border data-[state=active]:bg-border rounded">Questions</TabsTrigger>
-                <TabsTrigger value="Submissions" className="border-2 border-border data-[state=active]:bg-border rounded">Submissions</TabsTrigger>
+                <TabsTrigger id="questionsTab" value="Questions" className="border-2 border-border data-[state=active]:bg-border rounded">Questions</TabsTrigger>
+                <TabsTrigger id="submissionsTab" value="Submissions" className="border-2 border-border data-[state=active]:bg-border rounded">Submissions</TabsTrigger>
               </TabsList>
 
               <TabsContent value="Questions" className="w-[100%] h-[90vh]">
                 <QuestionPage question={question} />
+              </TabsContent>
+              <TabsContent value="Submissions" className="w-[100%] h-[90vh]">
+                <SubmissionsTab 
+                  testCases={question?.problem.testCases}
+                  outputs={output} 
+                />
               </TabsContent>
             </Tabs>
           </ResizablePanel>
@@ -78,8 +85,8 @@ export default function CodingPage() {
               <ResizableHandle withHandle />
               <ResizablePanel defaultSize={42}>
                 <OutputBox
-                  examples={question?.problem.testCases}
-                  outputs={output}
+                examples={question?.problem.testCases.slice(0,4)}
+                outputs={output?.slice(0,4)}
                 />
               </ResizablePanel>
             </ResizablePanelGroup>
