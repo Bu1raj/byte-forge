@@ -18,6 +18,8 @@ export default function CodeEditor({
   const [code, setCode] = useState("");
   const [isRunning, setIsRunning] = useState(false);
   const {currentUser, userData, setUserData} = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const editorRef = useRef();
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -41,12 +43,12 @@ export default function CodeEditor({
     setUserData(copy);
   }
 
-  const RunCode = async () => {
-    setIsRunning(true);
+  const RunCode = async (typeSubmit) => {
+    typeSubmit? setIsSubmitting(true): setIsRunning(true);
     const requestBody = {
       code: code,
       language: language,
-      testcase : examples,
+      testcase : typeSubmit? examples:examples.slice(0,4)
     };
     console.log(requestBody);
 
@@ -71,7 +73,7 @@ export default function CodeEditor({
       .catch((error) => {
         console.error("Error sending request:", error);
       }).finally(() => {
-        setIsRunning(false);
+        typeSubmit? setIsSubmitting(false) : setIsRunning(false);
       });
   };
 
@@ -90,13 +92,27 @@ export default function CodeEditor({
             Run
           </button> */}
           <button
-            onClick={RunCode}
-            className="flex justify-center items-center border border-[#83B4FF] font-semibold rounded w-24 h-9 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background"
+            onClick={() => RunCode(false)}
+            className="flex justify-center items-center border border-[#83B4FF] font-semibold rounded w-full h-9 p-2 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background"
           >
             {isRunning ? (
               <PiSpinnerGapThin size={30} fill="currentColor" className="animate-spin" />
             ) : (
-              "Run Code"
+              "Run"
+            )}
+          </button>
+          <button
+            onClick={() => {
+                RunCode(true);
+                
+              }
+            }
+            className="flex justify-center items-center border border-[#83B4FF] font-semibold rounded w-full h-9 p-2 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background"
+          >
+            {isSubmitting ? (
+              <PiSpinnerGapThin size={30} fill="currentColor" className="animate-spin" />
+            ) : (
+              "Submit"
             )}
           </button>
         </div>
