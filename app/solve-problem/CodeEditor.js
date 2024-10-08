@@ -2,20 +2,17 @@ import SelectMenu from "@/components/SelectMenu";
 import React, { useState, useEffect, useRef } from "react";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { Skeleton } from "@/components/ui/skeleton";
-import CodingPage from "./page";
+import { PiSpinnerGapThin } from "react-icons/pi";
 
 export default function CodeEditor({
   config,
-  questionId,
-  setMessage,
-  setLoading,
-  loading,
   onSubmit,
   examples,
 }) {
   const [language, setLanguage] = useState("c");
   const [theme, setTheme] = useState("vs-dark");
   const [code, setCode] = useState("");
+  const [isRunning, setIsRunning] = useState(false);
 
   const editorRef = useRef();
   const onMount = (editor) => {
@@ -24,6 +21,7 @@ export default function CodeEditor({
   };
 
   const RunCode = async () => {
+    setIsRunning(true);
     const requestBody = {
       code: code,
       language: language,
@@ -44,14 +42,13 @@ export default function CodeEditor({
       .then((data) => {
         console.log(data);
         
-        let actualOps = data.map((element) => element["actualOutput"]);
-      //   data.forEach((element,index) => {
-      //     onSubmit(element["actualOutput"],index);
-      // });
-        onSubmit(actualOps);
+        // let actualOps = data.map((element) => element["actualOutput"]);
+        onSubmit(data);
       })
       .catch((error) => {
         console.error("Error sending request:", error);
+      }).finally(() => {
+        setIsRunning(false);
       });
   };
 
@@ -66,14 +63,18 @@ export default function CodeEditor({
           width="w-[150px]"
         />
         <div className="flex gap-2 items-center">
-          <button className="border border-[#83B4FF] font-semibold rounded w-24 h-9 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background">
+          {/* <button className="border border-[#83B4FF] font-semibold rounded w-24 h-9 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background">
             Run
-          </button>
+          </button> */}
           <button
             onClick={RunCode}
-            className="border border-[#83B4FF] font-semibold rounded w-24 h-9 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background"
+            className="flex justify-center items-center border border-[#83B4FF] font-semibold rounded w-24 h-9 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background"
           >
-            Submit
+            {isRunning ? (
+              <PiSpinnerGapThin size={30} fill="currentColor" className="animate-spin" />
+            ) : (
+              "Run Code"
+            )}
           </button>
         </div>
       </div>

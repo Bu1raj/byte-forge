@@ -3,7 +3,6 @@ const app = express();
 const cors = require('cors');
 const port = 3000;
 
-// Import the handler function
 const { handler } = require('./handler');
 
 app.use(cors({

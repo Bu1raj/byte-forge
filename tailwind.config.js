@@ -35,6 +35,7 @@ module.exports = {
         background: "#020817",
         foreground: "#FFFFFF",
         muted: "#2E3F6C",
+        overlay: "#27304a",
         primary: {
           DEFAULT: "#03346E",
           muted: "#012146",

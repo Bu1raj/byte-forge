@@ -26,8 +26,6 @@ export default function LoginForm() {
       router.push("/dashboard");
     }catch(err){
       console.error(err);
-    }finally{
-      setIsAuthenticating(false);
     }
   }
 

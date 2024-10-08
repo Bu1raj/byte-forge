@@ -14,7 +14,7 @@ export default function CodingPageNavbar() {
       <Image src={ByteForgeLogo} alt="ByteForge logo" width={90} />
       <div className="h-full flex p-2 mr-2 items-center">
         <Link
-          href={"/"}
+          href={"/dashboard"}
           className="bg-[#83B4FF] border border-[#83B4FF] rounded py-1 px-3 flex items-center gap-2 text-black font-medium transition duration-300 ease-in-out hover:text-[#83B4FF] hover:bg-transparent hover:shadow-gray-300"
         >
           <CiBoxList fill="currentColor" />
