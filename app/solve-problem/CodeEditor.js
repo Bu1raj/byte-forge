@@ -1,7 +1,7 @@
 import SelectMenu from "@/components/SelectMenu";
-import React, { useState, useEffect, useRef } from "react";
-import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
 import { Skeleton } from "@/components/ui/skeleton";
+import Editor from "@monaco-editor/react";
+import { useRef, useState } from "react";
 import { PiSpinnerGapThin } from "react-icons/pi";
 
 export default function CodeEditor({
