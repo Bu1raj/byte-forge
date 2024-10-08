@@ -68,7 +68,7 @@ export default function CodingPage() {
                 <CodeEditor
                   onSubmit={onSubmission}
                   config={getConfig()}
-                  questionId={question?.id}
+                  questionId={questionId}
                   setMessage={setMessage}
                   setLoading={setLoading}
                   loading={loading}
