@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { db } from "@/firebase";
 import Editor from "@monaco-editor/react";
 import { doc, setDoc } from "firebase/firestore";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { PiSpinnerGapThin } from "react-icons/pi";
 
 export default function CodeEditor({
@@ -77,6 +77,11 @@ export default function CodeEditor({
       });
   };
 
+  useEffect(() => {
+    if(userData && userData.experimentsStatus && userData.experimentsStatus[questionId]){
+      setCode(userData.experimentsStatus[questionId].code);
+    }
+  }, [userData, questionId]);
 
   return (
     <div className="flex gap-2 pl-3 h-full w-full flex-col">
@@ -120,7 +125,7 @@ export default function CodeEditor({
       {config && (
         <Editor
           language="c"
-          value={ userData && userData.experimentsStatus && userData.experimentsStatus[questionId]? userData.experimentsStatus[questionId].code : config[language].value}
+          value={ code !== "" ? code : config[language].value}
           onChange={(value) => setCode(value || "")}
           theme={theme}
           onMount={onMount}
