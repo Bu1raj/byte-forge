@@ -317,15 +317,103 @@ export const labData = {
           {
             input: "abcabcbb",
             expectedOutput: "3",
+            hide: false
           },
           {
             input: "bbbbb",
             expectedOutput: "1",
+            hide: false
           },
           {
             input: "pwwkew",
             expectedOutput: "3",
+            hide: false
           },
+          {
+            input: "",
+            expectedOutput: "0",
+            hide: true
+          },
+          {
+            input: "abcdef",
+            expectedOutput: "6",
+            hide: false
+          },
+          {
+            input: "aab",
+            expectedOutput: "2",
+            hide: false
+          },
+          {
+            input: "dvdf",
+            expectedOutput: "3",
+            hide: true
+          },
+          {
+            input: "anviaj",
+            expectedOutput: "5",
+            hide: false
+          },
+          {
+            input: "tmmzuxt",
+            expectedOutput: "5",
+            hide: true
+          },
+          {
+            input: "au",
+            expectedOutput: "2",
+            hide: false
+          },
+          {
+            input: "a",
+            expectedOutput: "1",
+            hide: false
+          },
+          {
+            input: "abcdeafgh",
+            expectedOutput: "7",
+            hide: false
+          },
+          {
+            input: "bbbbbbbc",
+            expectedOutput: "2",
+            hide: true
+          },
+          {
+            input: "xyzzyabc",
+            expectedOutput: "4",
+            hide: true
+          },
+          {
+            input: "aabbcc",
+            expectedOutput: "2",
+            hide: false
+          },
+          {
+            input: "ghijklmn",
+            expectedOutput: "8",
+            hide: false
+          },
+          {
+            input: "cdd",
+            expectedOutput: "2",
+            hide: true
+          },
+          {
+            input: "longestsubstring",
+            expectedOutput: "8",
+            hide: false
+          },
+          {
+            input: "abbabcdbba",
+            expectedOutput: "4",
+            hide: true
+          },
+          {
+            input: "abcdefghijklmnopqrstuvwxyz",
+            expectedOutput: "26",
+            hide: false
+          }
         ],
         constraints: [
           "0 <= s.length <= 5 * 10^4",
@@ -372,25 +460,105 @@ export const labData = {
       problem : {
         testCases: [
           {
-            input: "1 3 2",
+            input: "[1, 3], [2]",
             expectedOutput: "2.0",
+            hide: false
           },
           {
-            input: "1 2 3 4",
+            input: "[1, 2], [3, 4]",
             expectedOutput: "2.5",
+            hide: true
           },
           {
-            input: "0 0 0 0",
+            input: "[0, 0], [0, 0]",
             expectedOutput: "0.0",
+            hide: false
           },
           {
-            input: "1",
+            input: "[], [1]",
             expectedOutput: "1.0",
+            hide: true
           },
           {
-            input: "2",
+            input: "[2], []",
             expectedOutput: "2.0",
+            hide: false
           },
+          {
+            input: "[1, 3, 5], [2, 4, 6]",
+            expectedOutput: "3.5",
+            hide: true
+          },
+          {
+            input: "[7, 8, 9], [1, 2, 3]",
+            expectedOutput: "5.0",
+            hide: false
+          },
+          {
+            input: "[1], [1]",
+            expectedOutput: "1.0",
+            hide: true
+          },
+          {
+            input: "[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12]",
+            expectedOutput: "6.5",
+            hide: true
+          },
+          {
+            input: "[100, 101], [1, 2, 3]",
+            expectedOutput: "3.0",
+            hide: false
+          },
+          {
+            input: "[1, 3], [2, 7, 8, 9]",
+            expectedOutput: "5.0",
+            hide: true
+          },
+          {
+            input: "[4], [1, 2, 3, 5, 6]",
+            expectedOutput: "3.5",
+            hide: false
+          },
+          {
+            input: "[1, 2], [1, 2, 3]",
+            expectedOutput: "2.0",
+            hide: true
+          },
+          {
+            input: "[10, 20, 30], [5, 15, 25, 35]",
+            expectedOutput: "20.0",
+            hide: false
+          },
+          {
+            input: "[1, 2, 6, 8], [3, 4, 5, 7]",
+            expectedOutput: "4.5",
+            hide: false
+          },
+          {
+            input: "[2, 3, 5, 8], [4, 7]",
+            expectedOutput: "4.5",
+            hide: true
+          },
+          {
+            input: "[1, 5, 8], [3, 6, 9]",
+            expectedOutput: "5.5",
+            hide: false
+          },
+          {
+            input: "[12, 15, 20], [10, 17]",
+            expectedOutput: "15.0",
+            hide: true
+          },
+          {
+            input: "[1], [2, 3, 4]",
+            expectedOutput: "2.5",
+            hide: true
+          },
+          {
+            input: "[1, 3], [2, 4, 5, 6]",
+            expectedOutput: "3.5",
+            hide: false
+          }
         ],
         constraints: [
           "nums1.length == m",
@@ -441,20 +609,104 @@ export const labData = {
         testCases: [
           {
             input: "babad",
-            expectedOutput: "bab",
+            expectedOutput: "bab", // or "aba"
+            hide: false
           },
           {
             input: "cbbd",
             expectedOutput: "bb",
+            hide: true
           },
           {
             input: "a",
             expectedOutput: "a",
+            hide: false
           },
           {
             input: "ac",
-            expectedOutput: "a",
+            expectedOutput: "a", // or "c"
+            hide: true
           },
+          {
+            input: "racecar",
+            expectedOutput: "racecar",
+            hide: false
+          },
+          {
+            input: "abba",
+            expectedOutput: "abba",
+            hide: true
+          },
+          {
+            input: "abccba",
+            expectedOutput: "bccb",
+            hide: false
+          },
+          {
+            input: "madamimadam",
+            expectedOutput: "madamimadam",
+            hide: false
+          },
+          {
+            input: "hellolleh",
+            expectedOutput: "hellolleh",
+            hide: true
+          },
+          {
+            input: "abcdefg",
+            expectedOutput: "a", // or any single character
+            hide: false
+          },
+          {
+            input: "aabbaa",
+            expectedOutput: "aabbaa",
+            hide: true
+          },
+          {
+            input: "aabb",
+            expectedOutput: "aa", // or "bb"
+            hide: false
+          },
+          {
+            input: "xxyx",
+            expectedOutput: "xxyx",
+            hide: true
+          },
+          {
+            input: "noon",
+            expectedOutput: "noon",
+            hide: false
+          },
+          {
+            input: "xyzzyx",
+            expectedOutput: "xyzzyx",
+            hide: false
+          },
+          {
+            input: "1234321",
+            expectedOutput: "1234321",
+            hide: true
+          },
+          {
+            input: "wasitacaroracatisaw",
+            expectedOutput: "wasitacaroracatisaw",
+            hide: false
+          },
+          {
+            input: "abcba",
+            expectedOutput: "abcba",
+            hide: true
+          },
+          {
+            input: "aabbccddeeff",
+            expectedOutput: "bb", // or "cc", "dd", "ee", "ff"
+            hide: false
+          },
+          {
+            input: "sorewasitacaroracatisores",
+            expectedOutput: "sorewasitacaroracatisores",
+            hide: true
+          }
         ],
         constraints: [
           "1 <= s.length <= 1000",
@@ -501,17 +753,122 @@ export const labData = {
       problem: {
         testCases: [
           {
-            input: "PAYPALISHIRING 3",
-            expectedOutput: "PAHNAPLSIIGYIR",
+            input: "PAYPALISHIRING, 3",
+            expectedOutput: "PAHNAPLSIIGY", // Zigzag pattern:
+                                            // P   A   H   N
+                                            // A P L S I I G
+                                            // Y
+            hide: false
           },
           {
-            input: "PAYPALISHIRING 4",
-            expectedOutput: "PINALSIGYAHRPI",
+            input: "PAYPALISHIRING, 4",
+            expectedOutput: "PINALSIGYAHRPI", // Zigzag pattern:
+                                            // P     I   N
+                                            // A   L S I G
+                                            // Y   H
+                                            // R
+            hide: true
           },
           {
-            input: "A 1",
+            input: "A, 1",
             expectedOutput: "A",
+            hide: false
           },
+          {
+            input: "A, 2",
+            expectedOutput: "A",
+            hide: true
+          },
+          {
+            input: "ABCDEF, 3",
+            expectedOutput: "AEBDFC",
+            hide: false
+          },
+          {
+            input: "HELLOZIGZAG, 5",
+            expectedOutput: "HZIGAEOLG", // Zigzag pattern:
+                                            // H       Z
+                                            // E     I G
+                                            // L   A
+                                            // L
+                                            // O
+            hide: true
+          },
+          {
+            input: "PYTHON, 2",
+            expectedOutput: "PHOYTNA",
+            hide: false
+          },
+          {
+            input: "ZIGZAGCONVERSION, 3",
+            expectedOutput: "ZCONNIEIIGR", // Zigzag pattern:
+                                            // Z   C   O   N
+                                            // I G R S O
+                                            // V A
+            hide: true
+          },
+          {
+            input: "RACECAR, 3",
+            expectedOutput: "RACEAR", // Zigzag pattern:
+                                            // R   C
+                                            // A E
+                                            // A
+            hide: false
+          },
+          {
+            input: "LONGZIGZAGEXAMPLE, 4",
+            expectedOutput: "LXEAGEOZPMILN", // Zigzag pattern:
+                                            // L   E   Z
+                                            // O I G A
+                                            // N M
+                                            // X P
+            hide: true
+          },
+          {
+            input: "TESTCASE, 5",
+            expectedOutput: "TSAECTE",
+            hide: false
+          },
+          {
+            input: "ZIGZAG, 1",
+            expectedOutput: "ZIGZAG",
+            hide: true
+          },
+          {
+            input: "SIMPLE, 2",
+            expectedOutput: "SIEPLM",
+            hide: false
+          },
+          {
+            input: "EXTRAORDINARY, 6",
+            expectedOutput: "EOTRANRIYDXA", // Zigzag pattern:
+                                            // E       R
+                                            // X     T   O
+                                            // R   A
+                                            // D
+                                            // I
+                                            // N
+            hide: true
+          },
+          {
+            input: "COMPLETE, 4",
+            expectedOutput: "COLEMTPE",
+            hide: false
+          },
+          {
+            input: "EXCEPTIONAL, 3",
+            expectedOutput: "ECAITOLSN", // Zigzag pattern:
+                                            // E     A
+                                            // X C T O
+                                            // P   I
+                                            // O   L
+            hide: true
+          },
+          {
+            input: "VARIABLE, 5",
+            expectedOutput: "VAEILBR",
+            hide: false
+          }
         ],
         constraints: [
           "1 <= s.length <= 1000",
@@ -560,19 +917,88 @@ export const labData = {
           {
             input: "123",
             expectedOutput: "321",
+            hide: false
           },
           {
             input: "-123",
             expectedOutput: "-321",
+            hide: true
           },
           {
             input: "120",
             expectedOutput: "21",
+            hide: false
           },
           {
             input: "0",
             expectedOutput: "0",
+            hide: true
           },
+          {
+            input: "1534236469",
+            expectedOutput: "0", // Reversed integer exceeds 32-bit signed integer range
+            hide: false
+          },
+          {
+            input: "-2147483648",
+            expectedOutput: "0", // Reversed integer exceeds 32-bit signed integer range
+            hide: true
+          },
+          {
+            input: "10",
+            expectedOutput: "1",
+            hide: false
+          },
+          {
+            input: "-10",
+            expectedOutput: "-1",
+            hide: true
+          },
+          {
+            input: "2147483647",
+            expectedOutput: "0", // Reversed integer exceeds 32-bit signed integer range
+            hide: false
+          },
+          {
+            input: "1000000003",
+            expectedOutput: "0", // Reversed integer exceeds 32-bit signed integer range
+            hide: true
+          },
+          {
+            input: "500",
+            expectedOutput: "5",
+            hide: false
+          },
+          {
+            input: "1000",
+            expectedOutput: "1",
+            hide: true
+          },
+          {
+            input: "-200",
+            expectedOutput: "-2",
+            hide: false
+          },
+          {
+            input: "-123456789",
+            expectedOutput: "-987654321",
+            hide: true
+          },
+          {
+            input: "0",
+            expectedOutput: "0",
+            hide: false
+          },
+          {
+            input: "999999999",
+            expectedOutput: "0", // Reversed integer exceeds 32-bit signed integer range
+            hide: true
+          },
+          {
+            input: "1234567890",
+            expectedOutput: "987654321",
+            hide: false
+          }
         ],
         constraints: ["-2^31 <= x <= 2^31 - 1"],
       },
@@ -618,23 +1044,88 @@ export const labData = {
           {
             input: "42",
             expectedOutput: "42",
+            hide: false
           },
           {
-            input: "-42",
+            input: "   -42",
             expectedOutput: "-42",
+            hide: true
           },
           {
             input: "4193 with words",
             expectedOutput: "4193",
+            hide: false
           },
           {
             input: "words and 987",
-            expectedOutput: "0",
+            expectedOutput: "0", // No valid conversion could be performed
+            hide: true
           },
           {
             input: "-91283472332",
-            expectedOutput: "-2147483648",
+            expectedOutput: "-2147483648", // Exceeds 32-bit signed integer range
+            hide: false
           },
+          {
+            input: "2147483648",
+            expectedOutput: "2147483647", // Exceeds 32-bit signed integer range
+            hide: true
+          },
+          {
+            input: "   +0 123",
+            expectedOutput: "0",
+            hide: false
+          },
+          {
+            input: "-5-",
+            expectedOutput: "-5",
+            hide: true
+          },
+          {
+            input: "3.14",
+            expectedOutput: "3",
+            hide: false
+          },
+          {
+            input: "   0000123",
+            expectedOutput: "123",
+            hide: true
+          },
+          {
+            input: "+-12",
+            expectedOutput: "0", // No valid conversion could be performed
+            hide: false
+          },
+          {
+            input: "  -0012a42",
+            expectedOutput: "-12",
+            hide: true
+          },
+          {
+            input: "0.1",
+            expectedOutput: "0", // No valid conversion could be performed
+            hide: false
+          },
+          {
+            input: "12abc34",
+            expectedOutput: "12",
+            hide: true
+          },
+          {
+            input: "-+5",
+            expectedOutput: "0", // No valid conversion could be performed
+            hide: false
+          },
+          {
+            input: "99999999999",
+            expectedOutput: "2147483647", // Exceeds 32-bit signed integer range
+            hide: true
+          },
+          {
+            input: "10 20",
+            expectedOutput: "10",
+            hide: false
+          }
         ],
         constraints: [
           "0 <= s.length <= 200",
@@ -683,19 +1174,83 @@ export const labData = {
           {
             input: "121",
             expectedOutput: "true",
+            hide: false
           },
           {
             input: "-121",
             expectedOutput: "false",
+            hide: true
           },
           {
             input: "10",
             expectedOutput: "false",
+            hide: false
           },
           {
-            input: "-101",
-            expectedOutput: "false",
+            input: "0",
+            expectedOutput: "true",
+            hide: true
           },
+          {
+            input: "12321",
+            expectedOutput: "true",
+            hide: false
+          },
+          {
+            input: "12345",
+            expectedOutput: "false",
+            hide: true
+          },
+          {
+            input: "1001",
+            expectedOutput: "true",
+            hide: false
+          },
+          {
+            input: "11111",
+            expectedOutput: "true",
+            hide: true
+          },
+          {
+            input: "22222",
+            expectedOutput: "true",
+            hide: false
+          },
+          {
+            input: "45654",
+            expectedOutput: "true",
+            hide: true
+          },
+          {
+            input: "98789",
+            expectedOutput: "true",
+            hide: false
+          },
+          {
+            input: "100001",
+            expectedOutput: "true",
+            hide: true
+          },
+          {
+            input: "99899",
+            expectedOutput: "true",
+            hide: false
+          },
+          {
+            input: "123456",
+            expectedOutput: "false",
+            hide: true
+          },
+          {
+            input: "55555",
+            expectedOutput: "true",
+            hide: false
+          },
+          {
+            input: "7007",
+            expectedOutput: "true",
+            hide: true
+          }
         ],
         constraints: ["-2^31 <= x <= 2^31 - 1"],
       },
@@ -740,25 +1295,90 @@ export const labData = {
       problem: {
         testCases: [
           {
-            input: "aa a",
-            expectedOutput: "false",
+            input: "aa, a",
+            expectedOutput: "false", // 'a' does not match 'aa'
+            hide: false
           },
           {
-            input: "aa a*",
-            expectedOutput: "true",
+            input: "aa, a*",
+            expectedOutput: "true", // 'a*' matches 'aa'
+            hide: true
           },
           {
-            input: "ab .*",
-            expectedOutput: "true",
+            input: "ab, .*",
+            expectedOutput: "true", // '.*' matches 'ab'
+            hide: false
           },
           {
-            input: "aab c*a*b",
-            expectedOutput: "true",
+            input: "aab, c*a*b",
+            expectedOutput: "true", // 'c*a*b' matches 'aab'
+            hide: true
           },
           {
-            input: "mississippi mis*is*p*.",
-            expectedOutput: "false",
+            input: "mississippi, mis*is*p*.",
+            expectedOutput: "false", // 'mis*is*p*.' does not match 'mississippi'
+            hide: false
           },
+          {
+            input: "mississippi, mis*is*ip*.",
+            expectedOutput: "true", // 'mis*is*ip*.' matches 'mississippi'
+            hide: true
+          },
+          {
+            input: "abcd, ab.*",
+            expectedOutput: "true", // 'ab.*' matches 'abcd'
+            hide: false
+          },
+          {
+            input: "aaa, a*a",
+            expectedOutput: "true", // 'a*a' matches 'aaa'
+            hide: true
+          },
+          {
+            input: "ab, .*c",
+            expectedOutput: "false", // '.*c' does not match 'ab'
+            hide: false
+          },
+          {
+            input: "ab, a.",
+            expectedOutput: "true", // 'a.' matches 'ab'
+            hide: true
+          },
+          {
+            input: "ab, a*.",
+            expectedOutput: "true", // 'a*.' matches 'ab'
+            hide: false
+          },
+          {
+            input: "abcd, a.*c",
+            expectedOutput: "false", // 'a.*c' does not match 'abcd'
+            hide: true
+          },
+          {
+            input: "xyz, x.*",
+            expectedOutput: "true", // 'x.*' matches 'xyz'
+            hide: false
+          },
+          {
+            input: "x, .",
+            expectedOutput: "true", // '.' matches any single character
+            hide: true
+          },
+          {
+            input: "abc, a.c",
+            expectedOutput: "true", // 'a.c' matches 'abc'
+            hide: false
+          },
+          {
+            input: "ab, a*b*",
+            expectedOutput: "true", // 'a*b*' matches 'ab'
+            hide: true
+          },
+          {
+            input: "testcase, test.*",
+            expectedOutput: "true", // 'test.*' matches 'testcase'
+            hide: false
+          }
         ],
         constraints: [
           "1 <= s.length <= 20",
