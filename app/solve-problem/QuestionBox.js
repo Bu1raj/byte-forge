@@ -13,6 +13,8 @@ export default function QuestionBox({ question }) {
     return <Skeleton className="h-[80vh] w-full" />;
   }
 
+  let count = 1;
+
   return (
     <div className="pl-4 pr-4 pt-3 flex flex-col gap-5 overflow-x-hidden h-[90vh] overflow-scroll pb-12">
       <div>
@@ -25,9 +27,12 @@ export default function QuestionBox({ question }) {
 
       <div className="flex flex-col gap-3 text-white">
         
-        {question.problem.testCases.map((example, index) => (
+        {
+        question.problem.testCases.map((example, index) => 
+        !example.hide &&
+        (
           <div key={index} className="bg-subtleBackground p-3 rounded">
-            <p className="font-semibold mb-2">Example {index + 1}</p>
+            <p className="font-semibold mb-2">Example {count++}</p>
             <div className="flex flex-col gap-1">
               <div>
                 <p className="font-semibold mb-1">Input</p>
