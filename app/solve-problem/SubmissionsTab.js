@@ -49,7 +49,7 @@ const TestCaseResults = ({testCases, outputs}) => {
           key={index} 
           className="bg-subtleBackground rounded w-full text-center text-md shadow-md h-10 flex items-center justify-center"
         >
-          <span className={!outputs || outputs[index]?.passed ? 'text-green-500 opacity-60' : 'text-red-500 opacity-60'}>
+          <span className={!outputs || outputs[index]?.passed ? 'text-green-500 opacity-80' : 'text-red-500 opacity-80'}>
             Test Case {index + 1}
           </span>
         </div>

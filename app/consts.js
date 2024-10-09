@@ -654,7 +654,7 @@ export const labData = {
           },
           {
             input: "abcdefg",
-            expectedOutput: "a", // or any single character
+            expectedOutput: "a", 
             hide: false
           },
           {
@@ -664,7 +664,7 @@ export const labData = {
           },
           {
             input: "aabb",
-            expectedOutput: "aa", // or "bb"
+            expectedOutput: "aa", 
             hide: false
           },
           {
@@ -754,19 +754,12 @@ export const labData = {
         testCases: [
           {
             input: "PAYPALISHIRING, 3",
-            expectedOutput: "PAHNAPLSIIGY", // Zigzag pattern:
-                                            // P   A   H   N
-                                            // A P L S I I G
-                                            // Y
+            expectedOutput: "PAHNAPLSIIGY",
             hide: false
           },
           {
             input: "PAYPALISHIRING, 4",
-            expectedOutput: "PINALSIGYAHRPI", // Zigzag pattern:
-                                            // P     I   N
-                                            // A   L S I G
-                                            // Y   H
-                                            // R
+            expectedOutput: "PINALSIGYAHRPI", 
             hide: true
           },
           {
@@ -786,12 +779,7 @@ export const labData = {
           },
           {
             input: "HELLOZIGZAG, 5",
-            expectedOutput: "HZIGAEOLG", // Zigzag pattern:
-                                            // H       Z
-                                            // E     I G
-                                            // L   A
-                                            // L
-                                            // O
+            expectedOutput: "HZIGAEOLG", 
             hide: true
           },
           {
@@ -801,27 +789,17 @@ export const labData = {
           },
           {
             input: "ZIGZAGCONVERSION, 3",
-            expectedOutput: "ZCONNIEIIGR", // Zigzag pattern:
-                                            // Z   C   O   N
-                                            // I G R S O
-                                            // V A
+            expectedOutput: "ZCONNIEIIGR", 
             hide: true
           },
           {
             input: "RACECAR, 3",
-            expectedOutput: "RACEAR", // Zigzag pattern:
-                                            // R   C
-                                            // A E
-                                            // A
+            expectedOutput: "RACEAR", 
             hide: false
           },
           {
             input: "LONGZIGZAGEXAMPLE, 4",
-            expectedOutput: "LXEAGEOZPMILN", // Zigzag pattern:
-                                            // L   E   Z
-                                            // O I G A
-                                            // N M
-                                            // X P
+            expectedOutput: "LXEAGEOZPMILN", 
             hide: true
           },
           {
@@ -841,13 +819,7 @@ export const labData = {
           },
           {
             input: "EXTRAORDINARY, 6",
-            expectedOutput: "EOTRANRIYDXA", // Zigzag pattern:
-                                            // E       R
-                                            // X     T   O
-                                            // R   A
-                                            // D
-                                            // I
-                                            // N
+            expectedOutput: "EOTRANRIYDXA", 
             hide: true
           },
           {
@@ -857,18 +829,30 @@ export const labData = {
           },
           {
             input: "EXCEPTIONAL, 3",
-            expectedOutput: "ECAITOLSN", // Zigzag pattern:
-                                            // E     A
-                                            // X C T O
-                                            // P   I
-                                            // O   L
+            expectedOutput: "ECAITOLSN", 
             hide: true
           },
           {
             input: "VARIABLE, 5",
             expectedOutput: "VAEILBR",
             hide: false
-          }
+          },
+          {
+            input: "PALINDROME, 3",
+            expectedOutput: "PNLAMOEIRD", 
+            hide: true
+        },
+        {
+            input: "ZIGZAGEXTRA, 2",
+            expectedOutput: "ZGZRXTIAEG", 
+            hide: false
+        },
+        {
+            input: "PROGRAMMING, 4",
+            expectedOutput: "PGRMINRAOG", 
+            hide: true
+        }
+        
         ],
         constraints: [
           "1 <= s.length <= 1000",
@@ -998,7 +982,22 @@ export const labData = {
             input: "1234567890",
             expectedOutput: "987654321",
             hide: false
-          }
+          },
+          {
+            input: "-1000000009",
+            expectedOutput: "0", // Exceeds 32-bit signed integer range
+            hide: true
+          },
+          {
+            input: "987654321",
+            expectedOutput: "123456789",
+            hide: false
+          },
+          {
+            input: "400004",
+            expectedOutput: "400004",
+            hide: true
+          }          
         ],
         constraints: ["-2^31 <= x <= 2^31 - 1"],
       },
@@ -1125,7 +1124,23 @@ export const labData = {
             input: "10 20",
             expectedOutput: "10",
             hide: false
+          },
+          {
+            input: "  +42",
+            expectedOutput: "42",
+            hide: false
+          },
+          {
+            input: "1234abc5678",
+            expectedOutput: "1234",
+            hide: true
+          },
+          {
+            input: "-2147483649",
+            expectedOutput: "-2147483648", // Exceeds 32-bit signed integer range
+            hide: false
           }
+          
         ],
         constraints: [
           "0 <= s.length <= 200",
@@ -1250,7 +1265,27 @@ export const labData = {
             input: "7007",
             expectedOutput: "true",
             hide: true
-          }
+          },
+          {
+            input: "98765432123456789",
+            expectedOutput: "true",
+            hide: false
+            },
+            {
+                input: "54321",
+                expectedOutput: "false",
+                hide: true
+            },
+            {
+                input: "1000021",
+                expectedOutput: "false",
+                hide: false
+            },
+            {
+                input: "4444",
+                expectedOutput: "true",
+                hide: true
+            }        
         ],
         constraints: ["-2^31 <= x <= 2^31 - 1"],
       },
@@ -1378,7 +1413,22 @@ export const labData = {
             input: "testcase, test.*",
             expectedOutput: "true", // 'test.*' matches 'testcase'
             hide: false
-          }
+          },
+          {
+            input: "abc, ab.*d",
+            expectedOutput: "false", // 'ab.*d' does not match 'abc'
+            hide: true
+        },
+        {
+            input: "a, a*",
+            expectedOutput: "true", // 'a*' matches 'a'
+            hide: false
+        },
+        {
+            input: "abcde, ab.*e",
+            expectedOutput: "true", // 'ab.*e' matches 'abcde'
+            hide: true
+        }        
         ],
         constraints: [
           "1 <= s.length <= 20",
