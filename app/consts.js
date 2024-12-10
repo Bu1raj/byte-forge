@@ -18,7 +18,7 @@ export const labData = {
           {
             input: "3 7 8 4",
             expectedOutput: "-1",
-            hide: true
+            hide: false
           },
           {
             input: "-4 4 10 11",
@@ -28,7 +28,7 @@ export const labData = {
           {
             input: "5 -3 6 9",
             expectedOutput: "-1",
-            hide: true
+            hide: false
           },
           {
             input: "14 16 -8 2",
@@ -38,12 +38,12 @@ export const labData = {
           {
             input: "4 5 -5 10",
             expectedOutput: "-5 5",
-            hide: false
+            hide: true
           },
           {
             input: "2 7 -7 15",
             expectedOutput: "-7 7",
-            hide: false
+            hide: true
           },
           {
             input: "6 10 -3 9",
@@ -53,7 +53,7 @@ export const labData = {
           {
             input: "-3 1 2 3",
             expectedOutput: "-3 3",
-            hide: false
+            hide: true
           },
           {
             input: "1 6 7 11",
@@ -63,7 +63,7 @@ export const labData = {
           {
             input: "12 -12 3 7",
             expectedOutput: "-12 12",
-            hide: false
+            hide: true
           },
           {
             input: "1 1 2 2",
@@ -83,12 +83,12 @@ export const labData = {
           {
             input: "13 6 0 -13",
             expectedOutput: "-13 13",
-            hide: false
+            hide: true
           },
           {
             input: "1 5 -1 6",
             expectedOutput: "-1 1",
-            hide: false
+            hide: true
           },
           {
             input: "10 15 20 25",
@@ -98,7 +98,7 @@ export const labData = {
           {
             input: "-2 2 0 9",
             expectedOutput: "-2 2",
-            hide: false
+            hide: true
           },
           {
             input: "7 3 4 6",
@@ -108,7 +108,7 @@ export const labData = {
           {
             input: "6 -6 9 8",
             expectedOutput: "-6 6",
-            hide: false
+            hide: true
           }
         ],
         constraints: ["arr.size()<1e5"],
@@ -170,17 +170,17 @@ export const labData = {
           {
             input: "2 -> 4 -> 3, 8 -> 6 -> 4",
             expectedOutput: "0 -> 1 -> 8",
-            hide: true
+            hide: false
           },
           {
             input: "7 -> 2 -> 6, 5 -> 9 -> 3",
             expectedOutput: "2 -> 2 -> 0 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "5 -> 6 -> 4, 2 -> 9 -> 6",
             expectedOutput: "7 -> 5 -> 1 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "1 -> 2 -> 3, 9 -> 8 -> 7",
@@ -190,7 +190,7 @@ export const labData = {
           {
             input: "5 -> 2, 6 -> 3",
             expectedOutput: "1 -> 6 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "4 -> 9 -> 5, 6 -> 0 -> 5",
@@ -200,27 +200,27 @@ export const labData = {
           {
             input: "9 -> 9, 1",
             expectedOutput: "0 -> 0 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "1 -> 8, 0",
             expectedOutput: "1 -> 8",
-            hide: false
+            hide: true
           },
           {
             input: "0, 1 -> 2 -> 3",
             expectedOutput: "1 -> 2 -> 3",
-            hide: false
+            hide: true
           },
           {
             input: "7 -> 8 -> 9, 5 -> 6 -> 4",
             expectedOutput: "2 -> 5 -> 4 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "1 -> 9, 9",
             expectedOutput: "0 -> 0 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "5, 5",
@@ -235,22 +235,22 @@ export const labData = {
           {
             input: "9 -> 8 -> 7, 1 -> 1 -> 1",
             expectedOutput: "0 -> 0 -> 9",
-            hide: false
+            hide: true
           },
           {
             input: "6 -> 4 -> 5, 4 -> 6 -> 5",
             expectedOutput: "0 -> 1 -> 1 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "3 -> 3 -> 3, 7 -> 7 -> 7",
             expectedOutput: "0 -> 1 -> 1 -> 1",
-            hide: false
+            hide: true
           },
           {
             input: "1, 9 -> 9 -> 9",
             expectedOutput: "0 -> 0 -> 0 -> 1",
-            hide: false
+            hide: true
           }
         ],       
         constraints: ["The number of nodes in each linked list is in the range [1, 100]."],
@@ -332,17 +332,17 @@ export const labData = {
           {
             input: "",
             expectedOutput: "0",
-            hide: true
+            hide: false
           },
           {
             input: "abcdef",
             expectedOutput: "6",
-            hide: false
+            hide: true
           },
           {
             input: "aab",
             expectedOutput: "2",
-            hide: false
+            hide: true
           },
           {
             input: "dvdf",
@@ -352,7 +352,7 @@ export const labData = {
           {
             input: "anviaj",
             expectedOutput: "5",
-            hide: false
+            hide: true
           },
           {
             input: "tmmzuxt",
@@ -362,17 +362,17 @@ export const labData = {
           {
             input: "au",
             expectedOutput: "2",
-            hide: false
+            hide: true
           },
           {
             input: "a",
             expectedOutput: "1",
-            hide: false
+            hide: true
           },
           {
             input: "abcdeafgh",
-            expectedOutput: "7",
-            hide: false
+            expectedOutput: "8",
+            hide: true
           },
           {
             input: "bbbbbbbc",
@@ -381,18 +381,18 @@ export const labData = {
           },
           {
             input: "xyzzyabc",
-            expectedOutput: "4",
+            expectedOutput: "5",
             hide: true
           },
           {
             input: "aabbcc",
             expectedOutput: "2",
-            hide: false
+            hide: true
           },
           {
             input: "ghijklmn",
             expectedOutput: "8",
-            hide: false
+            hide: true
           },
           {
             input: "cdd",
@@ -402,7 +402,7 @@ export const labData = {
           {
             input: "longestsubstring",
             expectedOutput: "8",
-            hide: false
+            hide: true
           },
           {
             input: "abbabcdbba",
@@ -412,7 +412,7 @@ export const labData = {
           {
             input: "abcdefghijklmnopqrstuvwxyz",
             expectedOutput: "26",
-            hide: false
+            hide: true
           }
         ],
         constraints: [
@@ -467,7 +467,7 @@ export const labData = {
           {
             input: "[1, 2], [3, 4]",
             expectedOutput: "2.5",
-            hide: true
+            hide: false
           },
           {
             input: "[0, 0], [0, 0]",
@@ -477,12 +477,12 @@ export const labData = {
           {
             input: "[], [1]",
             expectedOutput: "1.0",
-            hide: true
+            hide: false
           },
           {
             input: "[2], []",
             expectedOutput: "2.0",
-            hide: false
+            hide: true
           },
           {
             input: "[1, 3, 5], [2, 4, 6]",
@@ -492,7 +492,7 @@ export const labData = {
           {
             input: "[7, 8, 9], [1, 2, 3]",
             expectedOutput: "5.0",
-            hide: false
+            hide: true
           },
           {
             input: "[1], [1]",
@@ -507,7 +507,7 @@ export const labData = {
           {
             input: "[100, 101], [1, 2, 3]",
             expectedOutput: "3.0",
-            hide: false
+            hide: true
           },
           {
             input: "[1, 3], [2, 7, 8, 9]",
@@ -517,7 +517,7 @@ export const labData = {
           {
             input: "[4], [1, 2, 3, 5, 6]",
             expectedOutput: "3.5",
-            hide: false
+            hide: true
           },
           {
             input: "[1, 2], [1, 2, 3]",
@@ -527,12 +527,12 @@ export const labData = {
           {
             input: "[10, 20, 30], [5, 15, 25, 35]",
             expectedOutput: "20.0",
-            hide: false
+            hide: true
           },
           {
             input: "[1, 2, 6, 8], [3, 4, 5, 7]",
             expectedOutput: "4.5",
-            hide: false
+            hide: true
           },
           {
             input: "[2, 3, 5, 8], [4, 7]",
@@ -542,7 +542,7 @@ export const labData = {
           {
             input: "[1, 5, 8], [3, 6, 9]",
             expectedOutput: "5.5",
-            hide: false
+            hide: true
           },
           {
             input: "[12, 15, 20], [10, 17]",
@@ -557,7 +557,7 @@ export const labData = {
           {
             input: "[1, 3], [2, 4, 5, 6]",
             expectedOutput: "3.5",
-            hide: false
+            hide: true
           }
         ],
         constraints: [

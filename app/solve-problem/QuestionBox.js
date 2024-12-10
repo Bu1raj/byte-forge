@@ -26,25 +26,24 @@ export default function QuestionBox({ question }) {
       </div>
 
       <div className="flex flex-col gap-3 text-white">
-        
-        {
-        question.problem.testCases.map((example, index) => 
-        !example.hide &&
-        (
-          <div key={index} className="bg-subtleBackground p-3 rounded">
-            <p className="font-semibold mb-2">Example {count++}</p>
-            <div className="flex flex-col gap-1">
-              <div>
-                <p className="font-semibold mb-1">Input</p>
-                <p className="font-light">{example.input}</p>
+        {question.problem.testCases.map(
+          (example, index) =>
+            !example.hide && (
+              <div key={index} className="bg-subtleBackground p-3 rounded">
+                <p className="font-semibold mb-2">Example {count++}</p>
+                <div className="flex flex-col gap-1">
+                  <div>
+                    <p className="font-semibold mb-1">Input</p>
+                    <p className="font-light">{example.input}</p>
+                  </div>
+                  <div className="mb-3">
+                    <p className="font-semibold mb-1">Output</p>
+                    <p className="font-light">{example.expectedOutput}</p>
+                  </div>
+                </div>
               </div>
-              <div className="mb-3">
-                <p className="font-semibold mb-1">Output</p>
-                <p className="font-light">{example.expectedOutput}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+            )
+        )}
       </div>
 
       <Separator />

@@ -21,7 +21,7 @@ export default function CompleteProfileForm() {
       const docRef = doc(db, "users", currentUser.uid);
       let userData = {};
 
-      if(role === "student") {
+      if (role === "student") {
         if (!fullName || !usn) {
           alert("Please fill all the fields");
           return;
@@ -31,20 +31,146 @@ export default function CompleteProfileForm() {
           usn: usn,
           role: role,
           email: currentUser.email,
-          experimentsStatus: {
-            expt01: null,
-            expt02: null,
-            expt03: null,
-            expt04: null,
-            expt05: null,
-            expt06: null,
-            expt07: null,
-            expt08: null,
-            expt09: null,
-            expt10: null,
-          },
+          enrolledLabs: [
+            {
+              labName: "Programming in C",
+              labId: "PICLAB2024",
+              status: {
+                expt01: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt02: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt03: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt04: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt05: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt06: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt07: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt08: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt09: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+                expt10: {
+                  completed: false,
+                  experimentMarks: 0,
+                  vivaMarks: 0,
+                  code: null,
+                  numberOfSubmissions: 0,
+                  vivaAns: {
+                    q1: null,
+                    q2: null,
+                    q3: null,
+                    q4: null,
+                  },
+                },
+              },
+            },
+          ],
         };
-      }else if(role === "staff") {
+      } else if (role === "staff") {
         if (!fullName || !staffId) {
           alert("Please fill all the fields");
           return;
@@ -65,17 +191,38 @@ export default function CompleteProfileForm() {
     }
   }
 
+  // async function getExperimentsOfALab(labId) {
+  //   const docRef = doc(db, "labData", labId);
+  //   const docSnap = await docRef.get();
+  //   if (docSnap.exists()) {
+  //     console.log("Document data:", docSnap.data());
+  //   } else {
+  //     // doc.data() will be undefined in this case
+  //     console.log("No such document!");
+  //   }
+  // }
+
   return (
     <form className="flex flex-col w-72 justify-center animate-in slide-in-from-bottom-14 duration-1000">
       <p className="mb-8 font-normal text-3xl text-foreground">
         You're one step away!
       </p>
 
-      <p className="mb-1 font-normal text-sm text-secondary-muted opacity-60">Choose your role</p>
-      <Tabs defaultValue="student" className="" onValueChange={(value) => setRole(value)}> 
+      <p className="mb-1 font-normal text-sm text-secondary-muted opacity-60">
+        Choose your role
+      </p>
+      <Tabs
+        defaultValue="student"
+        className=""
+        onValueChange={(value) => setRole(value)}
+      >
         <TabsList className="mb-3">
-          <TabsTrigger className="rounded w-[50%]" value="student">Student</TabsTrigger>
-          <TabsTrigger className="rounded w-[50%]" value="staff">Staff</TabsTrigger>
+          <TabsTrigger className="rounded w-[50%]" value="student">
+            Student
+          </TabsTrigger>
+          <TabsTrigger className="rounded w-[50%]" value="staff">
+            Staff
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="student" key="student">
           <input
@@ -116,3 +263,18 @@ export default function CompleteProfileForm() {
     </form>
   );
 }
+
+// experimentsStatus: {
+//   expt01: {
+
+//   },
+//   expt02: null,
+//   expt03: null,
+//   expt04: null,
+//   expt05: null,
+//   expt06: null,
+//   expt07: null,
+//   expt08: null,
+//   expt09: null,
+//   expt10: null,
+// },
