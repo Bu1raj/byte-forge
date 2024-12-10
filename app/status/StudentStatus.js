@@ -11,7 +11,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import { CgProfile } from "react-icons/cg";
 
 const StatusProfile = (userData) => {
-    const {userData} = useAuth();
     return(
         <div>
             <div className="flex items-center p-4 shadow-lg rounded-lg">
@@ -26,7 +25,7 @@ const StatusProfile = (userData) => {
     )
 }
 
-const StatusPageTable = (userData, experimentsList) => {
+const StatusPageTable = ({userData, experimentsList}) => {
     return (
         <div>
             <h3 style={{ fontWeight: 'bold', fontSize: '22px' }}>&nbsp;&nbsp;&nbsp;&nbsp;Progress</h3><br/>
@@ -59,10 +58,11 @@ const StatusPageTable = (userData, experimentsList) => {
 }
 
 export default function StudentStatus({userData, labData}) {
+    const {experimentsList} = labData
     return(
         <>
             <StatusProfile userData={userData}/>
-            <StatusPageTable userData={userData} experimentsList={labData.experimentsList}/>
+            <StatusPageTable userData={userData} experimentsList={experimentsList}/>
         </>
 
     )
