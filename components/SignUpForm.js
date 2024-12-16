@@ -37,21 +37,21 @@ export default function SignInForm() {
     <form className="flex flex-col w-72 justify-center animate-in slide-in-from-bottom-14 duration-1000">
       <p className="mb-4 font-normal text-3xl text-[#FDFFE2]">Hi, there</p>
       <input
-        className="h-12 p-3 mb-6 text-white rounded outline-none bg-[#1a2130]"
+        className="h-12 p-3 mb-4 text-white rounded outline-none bg-[#1a2130]"
         type="email"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        className="h-12 p-3 mb-6 text-white rounded outline-none bg-[#1a2130]"
+        className="h-12 p-3 mb-4 text-white rounded outline-none bg-[#1a2130]"
         type="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <input
-        className="h-12 p-3 mb-6 text-white rounded outline-none bg-[#1a2130]"
+        className="h-12 p-3 mb-4 text-white rounded outline-none bg-[#1a2130]"
         type="password"
         placeholder="Confirm Password"
         value={confirmPassword}

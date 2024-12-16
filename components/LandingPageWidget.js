@@ -18,11 +18,11 @@ export default function LandingPageWidget() {
     <div className="h-full w-full flex items-center justify-center gap-32">
       <div
         className={
-          "login-card-wrapper flex flex-col w-[350px] " +
-          (isLogin ? "h-[400px]" : "h-[480px]")
+          "login-card-wrapper flex flex-col w-[350px] items-center justify-center " +
+          (isLogin ? "h-[480px]" : "h-[480px]")
         }
       >
-        <div className="login-card-content flex flex-col items-center justify-center gap-12">
+        <div className="login-card-content flex flex-col items-center justify-center gap-8">
           {children}
           <div className="animate-in slide-in-from-bottom-56 duration-1000 flex flex-col w-full items-center ">
             <p className="text-sm font-semibold text-[#5f646e]">

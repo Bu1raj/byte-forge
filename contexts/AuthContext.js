@@ -20,13 +20,15 @@ export default function AuthProvider({children}) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
-  function login(email, password){
+  function login(email, password, role){
+    localStorage.setItem("userRole", role);
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout(){
     setCurrentUser(null);
     setUserData(null);
+    localStorage.removeItem("userRole");
     return signOut(auth);
   }
 
@@ -40,23 +42,36 @@ export default function AuthProvider({children}) {
           return;
         }
 
-        console.log("getting user data");
-        const docRef = doc(db, "users", user.uid);
+        const role = localStorage.getItem("userRole");
+        if(!role){
+          console.log("User role not specified");
+          return;
+        }
+
+        console.log(`getting user data for role ${role}`);
+
+        var collectionName = role === "student" ? "studentsData" : "staffData";
+        const docRef = doc(db, collectionName, user.uid);
         const docSnap = await getDoc(docRef);
+
         let firebaseData = {}
 
         if(docSnap.exists()){
           console.log("User data found");
           firebaseData = docSnap.data();
-          console.log(firebaseData);
+          console.log(firebaseData); 
+        }else{
+          console.warn(`No data found in the collection ${collectionName}`);
         }
         setUserData(firebaseData);
       }catch(e){
-        console.log(e);
+        console.error("ERROR: ", e);
       }finally{
         setLoading(false);
       }
     });
+
+    return () => unsubscribe();
   }, [])
 
   const value = {

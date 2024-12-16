@@ -16,6 +16,11 @@ export default function DashboardPage() {
     router.push("/");
   }
 
+  function handleGoBack(){
+    logout();
+    router.back();
+  }
+
   if (loading || labLoading) {
     return (
       <div className="w-screen h-screen flex flex-col items-center justify-center">
@@ -32,8 +37,18 @@ export default function DashboardPage() {
     );
   }
 
+  if (!loading && (Object.keys(userData).length === 0 || userData === null)) {
+    return (
+      <div className="w-screen h-screen flex flex-col items-center justify-center gap-4">
+        <h1 className="text-4xl font-bold">You don't have access to this page</h1>
+        <p className="text-xl font-normal text-slate-300">Check the role you chose while logging in</p>
+        <button onClick={handleGoBack} className="bg-[#FDFFE2] h-10 border duration-500 border-[#FDFFE2] rounded py-1 px-3 flex justify-center items-center gap-2 text-black font-semibold ease-in-out hover:text-[#FDFFE2] hover:bg-transparent">Go back</button>
+      </div>
+    );
+  }
+
   let children = <StudentDashboard />
-  
+
   if (userData.role === 'staff') {
     children = <StaffDashboard />
   }

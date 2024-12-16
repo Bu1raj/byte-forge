@@ -29,7 +29,7 @@ module.exports = {
       colors: {
         activeBorderColor: "#83B4FF",
         subtleBackground: "#131823",
-        border: "#1e293b",
+        border: "#2A2F3B",
         input: "#03346E",
         ring: "#03346E",
         background: "#020817",
@@ -102,5 +102,7 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
 };

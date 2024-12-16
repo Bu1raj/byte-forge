@@ -1,93 +1,52 @@
 "use client";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { CgProfile } from "react-icons/cg";
+import { IoTerminal } from "react-icons/io5";
+import { dummyStudentData } from "../consts";
+import StaffStatusTable from "@/components/status-page-widgets/StaffStatusTable";
 
-function StatusProfile({ userData }) {
+function LabProfile({ userData }) {
   return (
-    <div>
-      <div className="flex items-center p-4 shadow-lg rounded-lg">
-        <CgProfile className="w-32 h-32 text-gray-500 mr-6" />
-        <div className="w-full">
-          <h2 className="text-2xl font-semibold">{userData.name}</h2>
-          <p className="text-lg text-gray-600">{userData.staffId}</p>
-          <p className="text-lg text-gray-600">{userData.email}</p>
+    <div className="flex items-center px-20 py-12 justify-between">
+      <div className="flex items-center gap-4">
+        <IoTerminal size={100} className="text-tertiary" />
+        <p className="text-5xl">Programming in C</p>
+      </div>
+      <div className="flex items-start justify-center gap-4 text-sm text-slate-400">
+        <div className="flex flex-col gap-2 justify-start">
+          <p>Lab Instructor</p>
+          <p>Number of experiments</p>
+          <p>Number of students</p>
+          <p>Total marks</p>
+        </div>
+
+        <div className="flex flex-col gap-2 justify-start">
+          <p>:</p>
+          <p>:</p>
+          <p>:</p>
+          <p>:</p>
+        </div>
+
+        <div className="flex flex-col gap-2 justify-start">
+          <p>{userData.name}</p>
+          <p>{10}</p>
+          <p>{24}</p>
+          <p>{50}</p>
         </div>
       </div>
     </div>
   );
 }
 
-function StatusPageTable({ userData, experimentsList }) {
+export default function StaffStatus({ userData }) {
   return (
-    <div>
-      <h3 style={{ fontWeight: "bold", fontSize: "22px" }}>
-        &nbsp;&nbsp;Student Progress
-      </h3>
-      <br />
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className="text-center">Sl. No.</TableHead>
-            <TableHead className="w-[400px] whitespace-nowrap overflow-hidden text-ellipsis">
-              Student Name
-            </TableHead>
-            <TableHead className="text-center border-r border-gray-10">
-              USN
-            </TableHead>
-            {experimentsList.map((experiment, i) => (
-              <>
-                <TableHead className="text-center">E{i + 1}</TableHead>
-                <TableHead className="text-center">V{i + 1}</TableHead>
-                <TableHead className="text-center border-r border-gray-10">
-                  T{i + 1}
-                </TableHead>
-              </>
-            ))}
-            <TableHead className="text-center">Execution Score</TableHead>
-            <TableHead className="text-center">Viva Score</TableHead>
-            <TableHead className="text-center">Total</TableHead>
-          </TableRow>
-        </TableHeader>
-
-        <TableBody>
-          <TableRow>
-            <TableCell className="text-center">{1}</TableCell>
-            <TableCell>{userData.name}</TableCell>
-            <TableCell className="text-center border-r border-gray-10">
-              1RV21CS000
-            </TableCell>
-            {[...Array(10)].map((_, i) => (
-              <>
-                <TableCell className="text-center">0</TableCell>
-                <TableCell className="text-center">0</TableCell>
-                <TableCell className="text-center border-r border-gray-10">
-                  0
-                </TableCell>
-              </>
-            ))}
-            <TableCell className="text-center">0</TableCell>
-            <TableCell className="text-center">0</TableCell>
-            <TableCell className="text-center">0</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+    <div className="w-full">
+      <LabProfile userData={userData} />
+      <StaffStatusTable studentData={dummyStudentData} />
     </div>
   );
 }
 
-export default function StaffStatus({ userData, labData }) {
-  const { experimentsList } = labData;
-  return (
-    <>
-      <StatusProfile userData={userData} />
-      <StatusPageTable userData={userData} experimentsList={experimentsList} />
-    </>
-  );
-}
+
+// import { PiChalkboardTeacherFill } from "react-icons/pi";
+// import { FaMicrochip } from "react-icons/fa6";
+// import { PiStudentFill } from "react-icons/pi";
+// import { BsFileEarmarkSpreadsheet } from "react-icons/bs";

@@ -18,10 +18,11 @@ export default function CompleteProfileForm() {
   async function handleSubmit() {
     setIsSubmitting(true);
     try {
-      const docRef = doc(db, "users", currentUser.uid);
+      let docRef = null;
       let userData = {};
 
       if (role === "student") {
+        docRef = doc(db, "studentsData", currentUser.uid);
         if (!fullName || !usn) {
           alert("Please fill all the fields");
           return;
@@ -35,11 +36,12 @@ export default function CompleteProfileForm() {
             {
               labName: "Programming in C",
               labId: "PICLAB2024",
-              status: {
-                expt01: {
+              status: [
+                {
+                  id: "expt01",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 5,
+                  vivaMarks: 4,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -49,10 +51,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt02: {
+                {
+                  id: "expt02",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 6,
+                  vivaMarks: 4,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -62,10 +65,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt03: {
+                {
+                  id: "expt03",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 4,
+                  vivaMarks: 4,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -75,10 +79,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt04: {
+                {
+                  id: "expt04",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 6,
+                  vivaMarks: 3,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -88,10 +93,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt05: {
+                {
+                  id: "expt05",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 6,
+                  vivaMarks: 2,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -101,10 +107,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt06: {
+                {
+                  id: "expt06",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 6,
+                  vivaMarks: 1,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -114,10 +121,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt07: {
+                {
+                  id: "expt07",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 5,
+                  vivaMarks: 3,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -127,10 +135,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt08: {
+                {
+                  id: "expt08",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 4,
+                  vivaMarks: 2,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -140,10 +149,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt09: {
+                {
+                  id: "expt09",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 6,
+                  vivaMarks: 4,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -153,10 +163,11 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                expt10: {
+                {
+                  id: "expt10",
                   completed: false,
-                  experimentMarks: 0,
-                  vivaMarks: 0,
+                  experimentMarks: 5,
+                  vivaMarks: 2,
                   code: null,
                   numberOfSubmissions: 0,
                   vivaAns: {
@@ -166,11 +177,12 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-              },
+              ],
             },
           ],
         };
       } else if (role === "staff") {
+        docRef = doc(db, "staffData", currentUser.uid);
         if (!fullName || !staffId) {
           alert("Please fill all the fields");
           return;
@@ -180,12 +192,23 @@ export default function CompleteProfileForm() {
           staffId: staffId,
           role: role,
           email: currentUser.email,
+          labsHandled: [
+            {
+              labName: "Programming in C",
+              labId: "PICLAB2024",
+            },
+          ],
         };
       }
-      await setDoc(docRef, userData);
-      setUserData(userData);
-      console.log("Created user document ", userData);
-      router.push("/dashboard");
+
+      if (docRef) {
+        await setDoc(docRef, userData);
+        setUserData(userData);
+        console.log("Created user document ", userData);
+        router.push("/dashboard");
+      }else{
+        console.error("docRef is null");
+      }
     } catch (e) {
       console.error("ERROR:", e);
     }
