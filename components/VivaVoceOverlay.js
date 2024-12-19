@@ -5,13 +5,13 @@ export default function VivaVoceOverlay(props) {
   const { questions, setIsModalOpen } = props;
   return (
     <div className="w-full h-full fixed inset-0 z-50 flex-col flex items-center justify-center bg-opacity-80 bg-background">
-      <div className="w-[60%] h-[80%] bg-overlay flex flex-col gap-1 justify-center p-5 rounded-xl">
+      <div className="w-[60%] h-[80%] border bg-background flex flex-col gap-1 justify-center p-5 rounded-xl">
         <div className="w-full h-fit flex justify-end">
           <button onClick={() => setIsModalOpen(false)}>
             <IoMdClose size={30} />
           </button>
         </div>
-        <div className="w-full h-full bg-overlay p-5 flex flex-col gap-2 overflow-auto hide-scrollbar">
+        <div className="w-full h-full bg-background p-5 flex flex-col gap-2 overflow-auto hide-scrollbar">
           <p className="text-3xl mb-4">Quiz Questions</p>
           {questions.map((q, index) => (
             <div

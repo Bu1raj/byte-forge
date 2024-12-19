@@ -2,10 +2,9 @@
 import Navbar from "@/components/Navbars/CodingPageNavbar";
 import { useAuth } from "@/contexts/AuthContext";
 import StudentStatus from "./StudentStatus";
-import StaffStatus from "./StaffStatus";
 import { labData } from "../consts";
 
-export default function StatusPage() {
+function StatusPageContent() {
   const { userData, loading } = useAuth();
 
   if (loading) {
@@ -19,11 +18,10 @@ export default function StatusPage() {
   return (
     <>
       <Navbar />
-      {userData.role == "student" ? (
-        <StudentStatus userData={userData} labData={labData} />
-      ) : (
-        <StaffStatus userData={userData} labData={labData} />
-      )}
+      <StudentStatus userData={userData} labData={labData} />
     </>
   );
+}
+export default function StatusPage() {
+  return <StatusPageContent />;
 }

@@ -20,7 +20,7 @@ export default function StandardNavbar(props) {
       />
       <nav className="h-full flex p-2 mr-5 items-center gap-8">
           <Link 
-            href={"/status"}
+            href={"/student-status"}
             className="bg-[#FDFFE2] border border-[#FDFFE2] rounded py-1 px-3 flex items-center gap-2 text-black font-medium transition duration-300 ease-in-out hover:text-[#FDFFE2] hover:bg-transparent">
             <FaUser fill="currentColor" />
             Status

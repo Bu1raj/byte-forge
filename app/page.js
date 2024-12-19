@@ -1,5 +1,5 @@
-import Image from "next/image";
-import ExperimentsPage from "./dashboard/page";
+// import Image from "next/image";
+// import ExperimentsPage from "./dashboard/page";
 import LandingPageWidget from "@/components/LandingPageWidget";
 
 export default function Home() {

@@ -3,7 +3,7 @@ import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 export default function StaffStatusTable({ studentData }) {
   const numberOfStudents = studentData.length;
-  const [expandedRows, setExpandedRows] = useState(
+  const [expandedRows, setExpandedRows] = useState(() =>
     Array.from({ length: numberOfStudents }).fill(false)
   );
 
@@ -16,11 +16,11 @@ export default function StaffStatusTable({ studentData }) {
   }
 
   return (
-    <div className="border rounded mx-20 p-8">
-      <p className="font-normal text-xl mb-4">Student Progress</p>
-      <div className="w-full min-h-[335px] max-h-[370px] overflow-y-auto pr-4">
+    <div className="border rounded mx-20 py-6 px-8">
+      <p className="font-normal text-tertiary text-xl mb-2">Student Progress</p>
+      <div className="w-full max-h-[380px] overflow-y-auto pr-4">
         <table className="w-full table-auto">
-          <thead className="text-left sticky top-0 z-10 bg-background">
+          <thead className="text-left text-tertiary sticky top-0 z-10 bg-background">
             <tr>
               <th className="w-[20%]">Name</th>
               <th className="w-[14%]">USN</th>
@@ -34,9 +34,8 @@ export default function StaffStatusTable({ studentData }) {
 
           <tbody>
             {studentData.map((student, index) => (
-              <>
+              <React.Fragment key={index}>
                 <tr
-                  key={student.usn}
                   className={expandedRows[index] ? "border-none" : ""}
                 >
                   <td>{student.name}</td>
@@ -64,7 +63,7 @@ export default function StaffStatusTable({ studentData }) {
                     experimentStatus={student.enrolledLabs[0]}
                   />
                 )}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>

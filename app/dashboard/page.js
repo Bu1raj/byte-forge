@@ -1,17 +1,20 @@
 "use client"
 import StaffDashboard from "@/components/Dashboard-Widgets/StaffDashboard";
 import StudentDashboard from "@/components/Dashboard-Widgets/StudentDashboard";
-import StandardNavbar from "@/components/Navbars/StandardNavbar";
+import NavbarTemplate from "@/components/Navbars/NavbarTemplate";
 import { useAuth } from "@/contexts/AuthContext";
 import { useLDC } from "@/contexts/LabDataContext";
 import { useRouter } from "next/navigation";
+import { CgLogOut } from "react-icons/cg";
+import { FaUser } from "react-icons/fa6";
+
 
 export default function DashboardPage() {
   const {currentUser, userData, logout, loading} = useAuth();
   const {labLoading} = useLDC();
   const router = useRouter();
   
-  function handleLogout() {
+  const handleLogout = () => {
     logout();
     router.push("/");
   }
@@ -53,9 +56,30 @@ export default function DashboardPage() {
     children = <StaffDashboard />
   }
 
+  const navbarData = {
+    buttonList : [
+      {
+        isIcon: true,
+        text: 'Logout',
+        color: 'secondary',
+        onClick: handleLogout,
+        Icon: CgLogOut,
+      }
+    ],
+
+    linksList : [
+      {
+        href: userData.role === 'staff' ? '/student-status' : '/status',
+        text: 'Status',
+        color: 'tertiary',
+        Icon: FaUser,
+      }
+    ]
+  }
+
   return (
     <>
-      <StandardNavbar handleLogout={handleLogout}/>
+      <NavbarTemplate {...navbarData} />
       <div className="w-full h-[calc(100vh-5rem)] flex flex-col items-center justify-center relative">
         {children}
       </div>
