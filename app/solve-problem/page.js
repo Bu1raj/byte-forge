@@ -64,6 +64,7 @@ export default function CodingPage() {
                 <SubmissionsTab 
                   testCases={question?.problem.testCases}
                   outputs={output} 
+                  questionId={questionId}
                 />
               </TabsContent>
             </Tabs>

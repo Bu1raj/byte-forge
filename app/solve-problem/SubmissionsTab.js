@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useAuth } from "@/contexts/AuthContext";
 
 const TestResults = ({passedCount}) => {
   return(
@@ -71,14 +72,18 @@ const LCbutton = ({handleLastCodeClick}) => {
     </div>
   )}
 
-const LCpage = ({handleLastCodeClick}) => {
-  const code = `
-  function add(a, b) {
-    return a + b;
-  }
+const LCpage = ({handleLastCodeClick, questionId}) => {
+  const {userData} = useAuth();
+  questionId = parseInt(questionId.slice(-2))-1;
+  const code = userData.enrolledLabs[0].status[questionId].code;
 
-  console.log(add(2, 3));
-  `;
+  // const code = `
+  // function add(a, b) {
+  //   return a + b;
+  // }
+
+  // console.log(add(2, 3));
+  // `;
 
   return(
     <div className="w-full relative p-4">
@@ -97,7 +102,7 @@ const LCpage = ({handleLastCodeClick}) => {
   )
 }
 
-export default function SubmissionsTab({ testCases, outputs }) {
+export default function SubmissionsTab({ testCases, outputs, questionId }) {
   const passedCount = outputs ? outputs.filter(item => item && item.passed).length : 0;
   const firstFailedIndex = outputs ? outputs.findIndex(item => item && !item.passed) : -1;
   const [submitted, setSubmitted] = useState(false);
@@ -138,7 +143,9 @@ export default function SubmissionsTab({ testCases, outputs }) {
           <LCbutton handleLastCodeClick={handleLastCodeClick} />
         </div>
       ) : (
-        <LCpage handleLastCodeClick={handleLastCodeClick} />
+        <LCpage 
+          handleLastCodeClick={handleLastCodeClick} 
+          questionId={questionId}/>
       )}
     </div>
   );

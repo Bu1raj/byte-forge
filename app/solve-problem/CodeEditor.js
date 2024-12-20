@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/contexts/AuthContext";
 import { db } from "@/firebase";
 import Editor from "@monaco-editor/react";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { useRef, useState, useEffect } from "react";
 import { PiSpinnerGapThin } from "react-icons/pi";
 
@@ -17,7 +17,7 @@ export default function CodeEditor({
   const [theme, setTheme] = useState("vs-dark");
   const [code, setCode] = useState("");
   const [isRunning, setIsRunning] = useState(false);
-  const {currentUser, userData, setUserData} = useAuth();
+  const {currentUser, userData} = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const editorRef = useRef();
@@ -26,21 +26,16 @@ export default function CodeEditor({
     editor.focus();
   };
 
-  async function saveCodeToFirebase(){
-    const docRef = doc(db, "users", currentUser.uid);
+  async function saveCodeToFirebase(data) {
+    console.log("data: ", data);
+    const docRef = doc(db, "studentsData", currentUser.uid);
+    questionId = parseInt(questionId.slice(-2))-1;
+    const statusPath = `enrolledLabs.0.status.${questionId}.code`;
+    
 
-    let copy = {...userData};
-
-    if(copy.experimentsStatus[questionId]){
-      copy.experimentsStatus[questionId] = {...copy.experimentsStatus[questionId], code: code};
-    }else{
-      copy.experimentsStatus[questionId] = {code: code};
-    }
-
-    console.log(copy);
-
-    await setDoc(docRef, copy, {merge: true});
-    setUserData(copy);
+    await updateDoc(docRef, {
+      [statusPath]:code
+    });
   }
 
   const RunCode = async (typeSubmit) => {
@@ -63,12 +58,11 @@ export default function CodeEditor({
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        
-        // let actualOps = data.map((element) => element["actualOutput"]);
         onSubmit(data);
-        console.log("Saving code to firebase");
-        saveCodeToFirebase();
+        if(typeSubmit){
+          console.log("Saving code to firebase");
+          saveCodeToFirebase(data);
+        }
       })
       .catch((error) => {
         console.error("Error sending request:", error);
@@ -109,7 +103,6 @@ export default function CodeEditor({
           <button
             onClick={() => {
                 RunCode(true);
-                
               }
             }
             className="flex justify-center items-center border border-[#83B4FF] font-semibold rounded w-full h-9 p-2 transition duration-300 ease-in-out hover:bg-[#83B4FF] hover:text-background"

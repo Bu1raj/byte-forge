@@ -11,6 +11,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { CgProfile } from "react-icons/cg";
 
 const StatusProfile = (userData) => {
+    userData = userData.userData
     return(
         <div>
             <div className="flex items-center p-4 shadow-lg rounded-lg">
@@ -26,6 +27,7 @@ const StatusProfile = (userData) => {
 }
 
 const StatusPageTable = ({userData, experimentsList}) => {
+    const exptList = userData.enrolledLabs[0].status;
     return (
         <div>
             <h3 style={{ fontWeight: 'bold', fontSize: '22px' }}>&nbsp;&nbsp;&nbsp;&nbsp;Progress</h3><br/>
@@ -45,10 +47,13 @@ const StatusPageTable = ({userData, experimentsList}) => {
                         <TableRow>
                         <TableCell className="text-center">{index+1}</TableCell>
                         <TableCell>{experiment.title}</TableCell>
-                        <TableCell className="flex justify-center">{experiment.completed?"Completed":"Missing"}</TableCell>
-                        <TableCell className="text-center">0</TableCell>
-                        <TableCell className="text-center">0</TableCell>
-                        <TableCell className="text-center">0</TableCell>
+                        <TableCell
+                            className={`flex justify-center ${ exptList[index].completed ? "text-green-500" : "text-red-500"}`}>
+                            {exptList[index].completed ? "Completed" : "Missing"}
+                        </TableCell>
+                        <TableCell className="text-center">{exptList[index].experimentMarks}</TableCell>
+                        <TableCell className="text-center">{exptList[index].vivaMarks}</TableCell>
+                        <TableCell className="text-center font-bold">{exptList[index].vivaMarks + exptList[index].experimentMarks}</TableCell>
                         </TableRow>
                     </TableBody>
                 ))}
