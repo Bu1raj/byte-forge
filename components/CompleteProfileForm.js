@@ -36,9 +36,8 @@ export default function CompleteProfileForm() {
             {
               labName: "Programming in C",
               labId: "PICLAB2024",
-              status: [
-                {
-                  id: "expt01",
+              status: {
+                expt01: {
                   completed: false,
                   experimentMarks: 5,
                   vivaMarks: 4,
@@ -51,8 +50,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt02",
+
+                expt02: {
                   completed: false,
                   experimentMarks: 6,
                   vivaMarks: 4,
@@ -65,8 +64,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt03",
+
+                expt03: {
                   completed: false,
                   experimentMarks: 4,
                   vivaMarks: 4,
@@ -79,8 +78,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt04",
+
+                expt04: {
                   completed: false,
                   experimentMarks: 6,
                   vivaMarks: 3,
@@ -93,8 +92,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt05",
+
+                expt05: {
                   completed: false,
                   experimentMarks: 6,
                   vivaMarks: 2,
@@ -107,8 +106,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt06",
+
+                expt06: {
                   completed: false,
                   experimentMarks: 6,
                   vivaMarks: 1,
@@ -121,8 +120,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt07",
+
+                expt07: {
                   completed: false,
                   experimentMarks: 5,
                   vivaMarks: 3,
@@ -135,8 +134,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt08",
+
+                expt08: {
                   completed: false,
                   experimentMarks: 4,
                   vivaMarks: 2,
@@ -149,8 +148,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt09",
+
+                expt09: {
                   completed: false,
                   experimentMarks: 6,
                   vivaMarks: 4,
@@ -163,8 +162,8 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-                {
-                  id: "expt10",
+                
+                expt10: {
                   completed: false,
                   experimentMarks: 5,
                   vivaMarks: 2,
@@ -177,7 +176,7 @@ export default function CompleteProfileForm() {
                     q4: null,
                   },
                 },
-              ],
+              },
             },
           ],
         };
@@ -206,7 +205,7 @@ export default function CompleteProfileForm() {
         setUserData(userData);
         console.log("Created user document ", userData);
         router.push("/dashboard");
-      }else{
+      } else {
         console.error("docRef is null");
       }
     } catch (e) {

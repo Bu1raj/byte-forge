@@ -45,8 +45,8 @@ const TestCaseResults = ({testCases, outputs}) => {
   return(
     <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 mt-6 mb-8">
       {testCases.map((_, index) => (
-        <div 
-          key={index} 
+        <div
+          key={index}
           className="bg-subtleBackground rounded w-full text-center text-md shadow-md h-10 flex items-center justify-center"
         >
           <span className={!outputs || outputs[index]?.passed ? 'text-green-500 opacity-80' : 'text-red-500 opacity-80'}>

@@ -12,6 +12,7 @@ export default function CodeEditor({
   onSubmit,
   examples,
   questionId,
+  setUserCode,
 }) {
   const [language, setLanguage] = useState("c");
   const [theme, setTheme] = useState("vs-dark");
@@ -27,17 +28,17 @@ export default function CodeEditor({
   };
 
   async function saveCodeToFirebase(){
-    const docRef = doc(db, "users", currentUser.uid);
+    const docRef = doc(db, "studentsData", currentUser.uid);
 
     let copy = {...userData};
 
-    if(copy.experimentsStatus[questionId]){
-      copy.experimentsStatus[questionId] = {...copy.experimentsStatus[questionId], code: code};
-    }else{
-      copy.experimentsStatus[questionId] = {code: code};
-    }
+    // if(copy.experimentsStatus[questionId]){
+    //   copy.experimentsStatus[questionId] = {...copy.experimentsStatus[questionId], code: code};
+    // }else{
+    //   copy.experimentsStatus[questionId] = {code: code};
+    // }
 
-    console.log(copy);
+    copy.enrolledLabs[0].status[questionId].code = code;
 
     await setDoc(docRef, copy, {merge: true});
     setUserData(copy);
@@ -69,6 +70,7 @@ export default function CodeEditor({
         onSubmit(data);
         console.log("Saving code to firebase");
         saveCodeToFirebase();
+        setUserCode(code);
       })
       .catch((error) => {
         console.error("Error sending request:", error);
@@ -78,8 +80,8 @@ export default function CodeEditor({
   };
 
   useEffect(() => {
-    if(userData && userData.experimentsStatus && userData.experimentsStatus[questionId]){
-      setCode(userData.experimentsStatus[questionId].code);
+    if(userData){
+      setCode(userData.enrolledLabs[0].status[questionId].code);
     }
   }, [userData, questionId]);
 

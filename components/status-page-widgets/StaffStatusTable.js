@@ -35,9 +35,7 @@ export default function StaffStatusTable({ studentData }) {
           <tbody>
             {studentData.map((student, index) => (
               <React.Fragment key={index}>
-                <tr
-                  className={expandedRows[index] ? "border-none" : ""}
-                >
+                <tr className={expandedRows[index] ? "border-none" : ""}>
                   <td>{student.name}</td>
                   <td className="">{student.usn}</td>
                   <td className="">0</td>
@@ -73,8 +71,21 @@ export default function StaffStatusTable({ studentData }) {
 }
 
 function DetailsModal({ experimentStatus }) {
+  // this sort function is for sorting the keys
+  function idSort(ids) {
+    return ids.sort((a, b) => {
+      const numA = parseInt(a.replace("expt", ""), 10);
+      const numB = parseInt(b.replace("expt", ""), 10);
+      return numA - numB;
+    });
+  }
+
   const exptStatus = experimentStatus.status;
-  const numberOfExpriments = exptStatus.length;
+  const sortedIds = idSort(Object.keys(exptStatus));
+
+  console.log(sortedIds);
+  const numberOfExpriments = sortedIds.length;
+  
   return (
     <tr>
       <td colSpan={7} className="pt-1">
@@ -91,14 +102,14 @@ function DetailsModal({ experimentStatus }) {
             <tbody>
               <tr className="text-center">
                 <th>Execution Score</th>
-                {exptStatus.map((e, index) => (
-                  <td key={index}>{e.experimentMarks}</td>
+                {sortedIds.map((eid, index) => (
+                  <td key={index}>{exptStatus[eid].experimentMarks}</td>
                 ))}
               </tr>
               <tr className="text-center">
                 <th>Viva Score</th>
-                {exptStatus.map((e, index) => (
-                  <td key={index}>{e.vivaMarks}</td>
+                {sortedIds.map((eid, index) => (
+                  <td key={index}>{exptStatus[eid].vivaMarks}</td>
                 ))}
               </tr>
             </tbody>

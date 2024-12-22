@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbars/CodingPageNavbar";
 import { useSearchParams } from "next/navigation";
 import { getConfig } from "../constants";
 import { labData } from "../consts";
+import SubmissionTab from "./SubmissionTab";
 
 export default function CodingPage() {
   const {noStudentsInLab,experimentsList} = labData;
@@ -24,6 +25,7 @@ export default function CodingPage() {
   const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState(null);
+  const [userCode, setUserCode] = useState("");
 
   useEffect(() => {
     if (questionId) {
@@ -57,13 +59,14 @@ export default function CodingPage() {
                 <TabsTrigger id="submissionsTab" value="Submissions" className="border-2 border-border data-[state=active]:bg-border rounded">Submissions</TabsTrigger>
               </TabsList>
 
-              <TabsContent value="Questions" className="w-[100%] h-[90vh]">
+              <TabsContent value="Questions" className="w-[100%] h-[90vh] ">
                 <QuestionPage question={question} />
               </TabsContent>
-              <TabsContent value="Submissions" className="w-[100%] h-[90vh]">
-                <SubmissionsTab 
+              <TabsContent value="Submissions" className="w-[100%] h-[90vh] ">
+                <SubmissionTab
                   testCases={question?.problem.testCases}
-                  outputs={output} 
+                  outputs={output}
+                  code={userCode}
                 />
               </TabsContent>
             </Tabs>
@@ -79,6 +82,7 @@ export default function CodingPage() {
                   setMessage={setMessage}
                   setLoading={setLoading}
                   loading={loading}
+                  setUserCode={setUserCode}
                   examples = {question?.problem.testCases}
                 />
               </ResizablePanel>
