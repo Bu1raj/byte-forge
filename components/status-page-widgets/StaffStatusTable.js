@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 export default function StaffStatusTable({ studentData }) {
@@ -41,7 +43,19 @@ export default function StaffStatusTable({ studentData }) {
                   <td className="">0</td>
                   <td className="">0</td>
                   <td className="">0</td>
-                  <td className="">--</td>
+                  <td className="">
+                    <div style={{ width: "37px", height: "37px"}}>
+                      <CircularProgressbar
+                        value={20}
+                        text="20%"
+                        styles={buildStyles({
+                          textColor: "white",
+                          pathColor: "#83B4FF",
+                          trailColor: "#374151",
+                        })}
+                      />
+                    </div>
+                  </td>
                   <td>
                     <button
                       className="flex items-center justify-center w-8 ml-2"

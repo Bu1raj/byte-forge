@@ -21,7 +21,7 @@ function PassedTestCasesIndicator({ passedCount, testCasesCount }) {
             text={`${percentage}%`}
             styles={buildStyles({
               textColor: "white",
-              pathColor: "#34d399",
+              pathColor: "#83B4FF",
               trailColor: "#374151",
             })}
           />

@@ -21,7 +21,7 @@ module.exports = {
         inner: "inset 0 -5px 25px 0px rgba(131, 180, 255, 0.2)",
         innerOnHover: "inset 0 0px 25px 0px rgba(131, 180, 255, 0.1)",
         glow: "0 0 20px 3px rgba(131, 180, 255, 0.3)",
-        inner2: 'inset 0 -5px 25px -3px rgba(131, 180, 255, 0.2)',
+        inner2: "inset 0 -5px 25px -3px rgba(131, 180, 255, 0.2)",
       },
       backgroundSize: {
         "300%": "300%",
@@ -90,6 +90,11 @@ module.exports = {
             transform: "translatey(0px)",
           },
         },
+
+        "bounce-up": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -99,10 +104,9 @@ module.exports = {
         "login-border-spin": "login-border-spin 5s linear infinite",
         gradient: "animatedgradient 5s ease infinite alternate",
         float: "float 2.5s ease-in-out infinite",
+        "bounce-up": "bounce-up 0.8s ease-in-out infinite",
       },
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-  ],
+  plugins: [require("tailwindcss-animate")],
 };

@@ -1,23 +1,24 @@
-"use client"
-import React, { useEffect, useState } from "react";
+"use client";
+import AiAssistantModal from "@/components/Coding-Page-Widgets/AiAssistantModal";
+import Navbar from "@/components/Navbars/CodingPageNavbar";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import QuestionPage from "./QuestionBox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CodeEditor from "./CodeEditor";
-import OutputBox from "./OutputBox";
-import SubmissionsTab from "./SubmissionsTab";
-import Navbar from "@/components/Navbars/CodingPageNavbar";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { getConfig } from "../constants";
 import { labData } from "../consts";
+import Cache from "./CacheDefinition";
+import CodeEditor from "./CodeEditor";
+import OutputBox from "./OutputBox";
+import QuestionPage from "./QuestionBox";
 import SubmissionTab from "./SubmissionTab";
 
 export default function CodingPage() {
-  const {noStudentsInLab,experimentsList} = labData;
+  const { noStudentsInLab, experimentsList } = labData;
   const searchParams = useSearchParams();
   const questionId = searchParams?.get("questionId");
 
@@ -26,6 +27,14 @@ export default function CodingPage() {
   const [loading, setLoading] = useState(false);
   const [output, setOutput] = useState(null);
   const [userCode, setUserCode] = useState("");
+
+  const [aiModalOpen, setAiModalOpen] = useState(false);
+
+  // this useState is for AiAssistantModal
+  const [testCaseAndError, setTestCaseAndError] = useState(null); 
+
+  // this cache is for AiAssistantModal
+  const aiResponseCache = useRef(new Cache(4));
 
   useEffect(() => {
     if (questionId) {
@@ -44,6 +53,20 @@ export default function CodingPage() {
     return <div>Loading...</div>;
   }
 
+  function getInputToAi() {
+    if (!testCaseAndError) return { error: "Something went wrong" };
+
+    const { index, error } = testCaseAndError;
+    const input = {
+      qDescription: question.description,
+      code: userCode,
+      testCase: question.problem.testCases[index],
+      error: error,
+    };
+
+    return input;
+  }
+
   return (
     <div className="w-[100vw] h-[100vh] overflow-hidden">
       <Navbar />
@@ -55,8 +78,20 @@ export default function CodingPage() {
           <ResizablePanel defaultSize={42}>
             <Tabs defaultValue="Questions" className="w-full mt-1">
               <TabsList className="grid w-full grid-cols-2 bg-background gap-2 px-3">
-                <TabsTrigger id="questionsTab" value="Questions" className="border-2 border-border data-[state=active]:bg-border rounded">Questions</TabsTrigger>
-                <TabsTrigger id="submissionsTab" value="Submissions" className="border-2 border-border data-[state=active]:bg-border rounded">Submissions</TabsTrigger>
+                <TabsTrigger
+                  id="questionsTab"
+                  value="Questions"
+                  className="border-2 border-border data-[state=active]:bg-border rounded"
+                >
+                  Questions
+                </TabsTrigger>
+                <TabsTrigger
+                  id="submissionsTab"
+                  value="Submissions"
+                  className="border-2 border-border data-[state=active]:bg-border rounded"
+                >
+                  Submissions
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="Questions" className="w-[100%] h-[90vh] ">
@@ -74,7 +109,7 @@ export default function CodingPage() {
           <ResizableHandle withHandle />
           <ResizablePanel defaultSize={58}>
             <ResizablePanelGroup direction="vertical" className="mt-2">
-              <ResizablePanel defaultSize={58}>
+              <ResizablePanel defaultSize={55}>
                 <CodeEditor
                   onSubmit={onSubmission}
                   config={getConfig()}
@@ -83,19 +118,31 @@ export default function CodingPage() {
                   setLoading={setLoading}
                   loading={loading}
                   setUserCode={setUserCode}
-                  examples = {question?.problem.testCases}
+                  examples={question?.problem.testCases}
                 />
               </ResizablePanel>
               <ResizableHandle withHandle />
-              <ResizablePanel defaultSize={42}>
+              <ResizablePanel defaultSize={45}>
                 <OutputBox
-                examples={question?.problem.testCases.slice(0,4)}
-                outputs={output?.slice(0,4)}
+                  examples={question?.problem.testCases.slice(0, 4)}
+                  outputs={output?.slice(0, 4)}
+                  openAiModal={() => setAiModalOpen(true)}
+                  setTestCaseIndexAndError={setTestCaseAndError}
                 />
               </ResizablePanel>
             </ResizablePanelGroup>
           </ResizablePanel>
         </ResizablePanelGroup>
+
+        {aiModalOpen && (
+          <AiAssistantModal
+            closeAiModal={() => setAiModalOpen(false)}
+            inputToAi={getInputToAi()}
+            responseCache={aiResponseCache.current}
+          />
+        )}
+
+        {/* input to ai includes 1)error 2)question 3)code 4)test case  */}
       </div>
     </div>
   );
