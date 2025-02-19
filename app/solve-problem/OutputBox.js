@@ -23,15 +23,18 @@ export default function OutputBox({
   }, [outputs]);
 
   function onClickAiAssistant() {
-    // console.log(
-    //   currentSelectedTestCase,
-    //   outputs[currentSelectedTestCase].error
-    // );
-
-    let obj = {
-      index: currentSelectedTestCase,
-      error: outputs[currentSelectedTestCase].error,
-    };
+    let obj = {};
+    if (outputs[currentSelectedTestCase].error) {
+      obj = {
+        index: currentSelectedTestCase,
+        error: outputs[currentSelectedTestCase].error,
+      };
+    }else{
+      obj = {
+        index: currentSelectedTestCase,
+        error: outputs[currentSelectedTestCase].actualOutput,
+      }
+    }
 
     setTestCaseIndexAndError(obj);
     openAiModal();
@@ -113,4 +116,3 @@ export default function OutputBox({
     </Tabs>
   );
 }
-//this is dummy

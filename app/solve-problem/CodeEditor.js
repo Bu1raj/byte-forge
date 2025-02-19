@@ -32,12 +32,6 @@ export default function CodeEditor({
 
     let copy = {...userData};
 
-    // if(copy.experimentsStatus[questionId]){
-    //   copy.experimentsStatus[questionId] = {...copy.experimentsStatus[questionId], code: code};
-    // }else{
-    //   copy.experimentsStatus[questionId] = {code: code};
-    // }
-
     copy.enrolledLabs[0].status[questionId].code = code;
 
     await setDoc(docRef, copy, {merge: true});
@@ -65,8 +59,6 @@ export default function CodeEditor({
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        
-        // let actualOps = data.map((element) => element["actualOutput"]);
         onSubmit(data);
         console.log("Saving code to firebase");
         saveCodeToFirebase();

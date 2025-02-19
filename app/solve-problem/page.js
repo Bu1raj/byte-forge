@@ -28,11 +28,10 @@ export default function CodingPage() {
   const [output, setOutput] = useState(null);
   const [userCode, setUserCode] = useState("");
 
+  // AiAssistantModal state
   const [aiModalOpen, setAiModalOpen] = useState(false);
-
   // this useState is for AiAssistantModal
-  const [testCaseAndError, setTestCaseAndError] = useState(null); 
-
+  const [testCaseAndError, setTestCaseAndError] = useState(null);
   // this cache is for AiAssistantModal
   const aiResponseCache = useRef(new Cache(4));
 
@@ -46,6 +45,7 @@ export default function CodingPage() {
   }, [questionId]);
 
   const onSubmission = (result) => {
+    aiResponseCache.current.clear();
     setOutput(result);
   };
 
@@ -54,17 +54,25 @@ export default function CodingPage() {
   }
 
   function getInputToAi() {
-    if (!testCaseAndError) return { error: "Something went wrong" };
-
-    const { index, error } = testCaseAndError;
-    const input = {
-      qDescription: question.description,
-      code: userCode,
-      testCase: question.problem.testCases[index],
-      error: error,
-    };
-
-    return input;
+    if (testCaseAndError.error){
+      return {
+        qDescription: question.description,
+        code: userCode,
+        testCase: question.problem.testCases[testCaseAndError.index],
+        error: testCaseAndError.error,
+        isLogicalError: false
+      }
+    }else if (testCaseAndError.actualOutput){
+      return {
+        qDescription: question.description,
+        code: userCode,
+        testCase: question.problem.testCases[testCaseAndError.index],
+        actualOutput: testCaseAndError.actualOutput,
+        isLogicalError: true
+      }
+    }else{
+      return { error: "Something went wrong" };
+    }
   }
 
   return (
@@ -141,8 +149,6 @@ export default function CodingPage() {
             responseCache={aiResponseCache.current}
           />
         )}
-
-        {/* input to ai includes 1)error 2)question 3)code 4)test case  */}
       </div>
     </div>
   );

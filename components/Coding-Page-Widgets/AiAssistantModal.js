@@ -21,7 +21,6 @@ export default function AiAssistantModal({
 
       const foundInCache = responseCache.get(cacheKey);
       if (foundInCache){
-        // console.log("found in cache");
         setAiResponse(foundInCache);
         setGettingAiResponse(false);
         return;
@@ -32,7 +31,8 @@ export default function AiAssistantModal({
           inputToAi.error,
           inputToAi.qDescription,
           inputToAi.code,
-          inputToAi.testCase
+          inputToAi.testCase,
+          inputToAi.isLogicalError
         );
 
         responseCache.add(cacheKey, response);

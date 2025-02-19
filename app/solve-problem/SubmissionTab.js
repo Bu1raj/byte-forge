@@ -43,6 +43,14 @@ function PassedTestCasesIndicator({ passedCount, testCasesCount }) {
 // this is the component which appears at the top right corner of the submissions tab
 // it shows the input expected output and the actual output of the first failed test case
 function FirstFailedTestCaseDetails({ firstFailedIndex, testCases, outputs }) {
+  if (firstFailedIndex === -1) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full">
+        <p className="text-lg mb-4 text-green-500">All test cases passed!</p>
+        <p className="text-8xl">🥳</p>
+      </div>
+    );
+  }
   const firstFailedTestCase = testCases[firstFailedIndex];
   const firstFailedOutput = outputs[firstFailedIndex];
   return (

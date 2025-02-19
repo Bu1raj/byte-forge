@@ -13,7 +13,7 @@ export const labData = {
         testCases: [
           {
             input: "8 -8 4 7",
-            expectedOutput: "-8 8",
+            expectedOutput: "8 -8",
             hide: false,
           },
           {
@@ -38,12 +38,12 @@ export const labData = {
           },
           {
             input: "4 5 -5 10",
-            expectedOutput: "-5 5",
+            expectedOutput: "5 -5",
             hide: true,
           },
           {
             input: "2 7 -7 15",
-            expectedOutput: "-7 7",
+            expectedOutput: "7 -7",
             hide: true,
           },
           {
@@ -63,7 +63,7 @@ export const labData = {
           },
           {
             input: "12 -12 3 7",
-            expectedOutput: "-12 12",
+            expectedOutput: "12 -12",
             hide: true,
           },
           {
@@ -83,12 +83,12 @@ export const labData = {
           },
           {
             input: "13 6 0 -13",
-            expectedOutput: "-13 13",
+            expectedOutput: "13 -13",
             hide: true,
           },
           {
             input: "1 5 -1 6",
-            expectedOutput: "-1 1",
+            expectedOutput: "1 -1",
             hide: true,
           },
           {
@@ -108,7 +108,7 @@ export const labData = {
           },
           {
             input: "6 -6 9 8",
-            expectedOutput: "-6 6",
+            expectedOutput: "6 -6",
             hide: true,
           },
         ],
