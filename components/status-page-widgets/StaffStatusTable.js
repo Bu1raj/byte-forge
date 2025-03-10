@@ -17,6 +17,24 @@ export default function StaffStatusTable({ studentData }) {
     });
   }
 
+  function calculateMarks(status) {
+    let totalExperimentMarks = 0;
+    let totalVivaMarks = 0;
+
+    Object.values(status).forEach((experiment) => {
+      totalExperimentMarks += experiment.experimentMarks || 0; // Default to 0 if null
+      totalVivaMarks += experiment.vivaMarks || 0; // Use optional chaining to avoid errors
+    });
+
+    let totalMarks = totalExperimentMarks + totalVivaMarks;
+
+    return {
+      totalExperimentMarks,
+      totalVivaMarks,
+      totalMarks,
+    };
+  }
+
   return (
     <div className="border rounded mx-20 py-6 px-8">
       <p className="font-normal text-tertiary text-xl mb-2">Student Progress</p>
@@ -35,48 +53,51 @@ export default function StaffStatusTable({ studentData }) {
           </thead>
 
           <tbody>
-            {studentData.map((student, index) => (
-              <React.Fragment key={index}>
-                <tr className={expandedRows[index] ? "border-none" : ""}>
-                  <td>{student.name}</td>
-                  <td className="">{student.usn}</td>
-                  <td className="">0</td>
-                  <td className="">0</td>
-                  <td className="">0</td>
-                  <td className="">
-                    <div style={{ width: "37px", height: "37px"}}>
-                      <CircularProgressbar
-                        value={20}
-                        text="20%"
-                        styles={buildStyles({
-                          textColor: "white",
-                          pathColor: "#83B4FF",
-                          trailColor: "#374151",
-                        })}
-                      />
-                    </div>
-                  </td>
-                  <td>
-                    <button
-                      className="flex items-center justify-center w-8 ml-2"
-                      onClick={() => toggleModal(index)}
-                    >
-                      {expandedRows[index] ? (
-                        <VscEyeClosed size={25} />
-                      ) : (
-                        <VscEye size={25} />
-                      )}
-                    </button>
-                  </td>
-                </tr>
-                {expandedRows[index] && (
-                  <DetailsModal
-                    key={student.usn}
-                    experimentStatus={student.enrolledLabs[0]}
-                  />
-                )}
-              </React.Fragment>
-            ))}
+            {studentData.map((student, index) => {
+             let totalMarksObj = calculateMarks(student.enrolledLabs[0].status);
+              return (
+                <React.Fragment key={index}>
+                  <tr className={expandedRows[index] ? "border-none" : ""}>
+                    <td>{student.name}</td>
+                    <td className="">{student.usn}</td>
+                    <td className="">{totalMarksObj.totalExperimentMarks}</td>
+                    <td className="">{totalMarksObj.totalVivaMarks}</td>
+                    <td className="">{totalMarksObj.totalMarks}</td>
+                    <td className="">
+                      <div style={{ width: "37px", height: "37px" }}>
+                        <CircularProgressbar
+                          value={totalMarksObj.totalMarks}
+                          text={`${totalMarksObj.totalMarks}%`}
+                          styles={buildStyles({
+                            textColor: "white",
+                            pathColor: "#83B4FF",
+                            trailColor: "#374151",
+                          })}
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <button
+                        className="flex items-center justify-center w-8 ml-2"
+                        onClick={() => toggleModal(index)}
+                      >
+                        {expandedRows[index] ? (
+                          <VscEyeClosed size={25} />
+                        ) : (
+                          <VscEye size={25} />
+                        )}
+                      </button>
+                    </td>
+                  </tr>
+                  {expandedRows[index] && (
+                    <DetailsModal
+                      key={student.usn}
+                      experimentStatus={student.enrolledLabs[0]}
+                    />
+                  )}
+                </React.Fragment>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -99,7 +120,7 @@ function DetailsModal({ experimentStatus }) {
 
   console.log(sortedIds);
   const numberOfExpriments = sortedIds.length;
-  
+
   return (
     <tr>
       <td colSpan={7} className="pt-1">
