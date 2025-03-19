@@ -39,7 +39,7 @@ export default function CompleteProfileForm() {
               status: {
                 expt01: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -53,7 +53,7 @@ export default function CompleteProfileForm() {
 
                 expt02: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -67,7 +67,7 @@ export default function CompleteProfileForm() {
 
                 expt03: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks:Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -81,7 +81,7 @@ export default function CompleteProfileForm() {
 
                 expt04: {
                   completed: false,
-                  experimentMarks:Math.floor(Math.random() * 6) + 3,
+                  experimentMarks:Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -95,7 +95,7 @@ export default function CompleteProfileForm() {
 
                 expt05: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -109,7 +109,7 @@ export default function CompleteProfileForm() {
 
                 expt06: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks:Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -123,7 +123,7 @@ export default function CompleteProfileForm() {
 
                 expt07: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -137,7 +137,7 @@ export default function CompleteProfileForm() {
 
                 expt08: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -151,7 +151,7 @@ export default function CompleteProfileForm() {
 
                 expt09: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks:Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,
@@ -165,7 +165,7 @@ export default function CompleteProfileForm() {
                 
                 expt10: {
                   completed: false,
-                  experimentMarks: Math.floor(Math.random() * 6) + 3,
+                  experimentMarks: Math.floor(Math.random() * 4) + 3,
                   vivaMarks: Math.floor(Math.random() * 4) + 1,
                   code: null,
                   numberOfSubmissions: 0,

@@ -47,7 +47,7 @@ export default function CodeEditor({
     };
     console.log(requestBody);
 
-    const api_endpoint = process.env.NEXT_PUBLIC_AZURE_ENDPOINT;
+    const api_endpoint = process.env.NEXT_PUBLIC_AZURE_CODE_EXECUTION_API_URL;
 
     fetch(api_endpoint, {
       method: "POST",
